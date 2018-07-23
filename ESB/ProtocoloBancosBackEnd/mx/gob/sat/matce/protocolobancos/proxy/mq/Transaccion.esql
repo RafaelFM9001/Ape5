@@ -1,0 +1,94 @@
+BROKER SCHEMA mx.gob.sat.matce.protocolobancos.proxy.mq
+PATH mx.gob.sat.matce;
+
+/*
+*
+* Autor: Oscar Daniel Jiménez Gutiérrez - Softtek
+* Fecha de creación: Enero 2018 Version: 1.0
+*/
+
+
+DECLARE ns9 NAMESPACE 'http://impl.webservice.util.web.wstran.ce.siat.sat.gob.mx/';
+
+
+CREATE COMPUTE MODULE Transaccion_GetDetalleTransaccion
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET Environment.XMLValidator.SchemaLocation = SchemaLocation;
+		DECLARE refEnv REFERENCE TO Environment;
+		DECLARE refIn REFERENCE TO InputRoot;		
+		CALL InitializeFlowProxyMQ(refEnv, refIn);
+		
+--DECLARE specialChars CHARACTER CAST( X'0D0A09' AS CHARACTER CCSID 1208);  --\r\n\t
+--DECLARE enter CHARACTER CAST( X'0D0A' AS CHARACTER CCSID 1208);  --\r\n\t
+----Line feed 			\n		-> 0x0A
+----Carriage return (CR)	\r		-> 0x0D
+----Tab					\t		-> 0x09
+----CR+LF					\r\n	-> 0x0D0A
+----CR+LF+Tab				\r\n\t	-> 0x0D0A09
+--DECLARE respuestaEncriptacion CHARACTER;
+--SET respuestaEncriptacion = InputRoot.XMLNSC.ns9:guardaRespuestaTransaccion.respuestaTransaccion.respuestaEncriptacion;
+--SET respuestaEncriptacion = TRIM(LEADING specialChars FROM respuestaEncriptacion); --LEADING, TRAILING
+--SET respuestaEncriptacion = REPLACE(respuestaEncriptacion, enter);
+--SET OutputRoot.XMLNSC.ns9:guardaRespuestaTransaccion.respuestaTransaccion.respuestaEncriptacion = respuestaEncriptacion;
+		
+		--<?xml version="1.0" encoding="ISO-8859-1"?>
+		
+		CASE InputRoot.MQMD.SourceQueue
+		WHEN 'PB.TRANSACCION.GENERAR.REQ' THEN
+			SET OutputLocalEnvironment.Destination.SOAP.Request.Operation = 'generaTransaccion';
+		WHEN 'PB.TRANSACCION.GUARDAR.REQ' THEN
+			SET OutputLocalEnvironment.Destination.SOAP.Request.Operation = 'guardaRespuestaTransaccion';
+		WHEN 'PB.TRANSACCION.CONSULTAR.REQ' THEN
+			SET OutputLocalEnvironment.Destination.SOAP.Request.Operation = 'consultaRespuestaTransaccion';
+		END CASE;
+		
+		SET Environment.Operation = OutputLocalEnvironment.Destination.SOAP.Request.Operation;
+		
+		SET OutputRoot.Properties.Encoding = 273;
+		SET OutputRoot.Properties.CodedCharSetId = 1208;
+				
+		SET OutputRoot.XMLNSC = InputRoot.XMLNSC;
+		DELETE FIELD OutputRoot.XMLNSC.[1].DetalleTransaccion;
+
+		RETURN TRUE;
+	END;
+END MODULE;
+
+
+CREATE COMPUTE MODULE Transaccion_FaultException
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET Environment.actor = 'WL';
+		
+		CASE InputLocalEnvironment.Destination.SOAP.Request.Operation
+		WHEN 'generaTransaccion' THEN
+			THROW USER EXCEPTION MESSAGE(2) VALUES('Error al generar transacción (fault)');
+		WHEN 'guardaRespuestaTransaccion' THEN
+			THROW USER EXCEPTION MESSAGE(3) VALUES('Error al guardar respuesta de transacción (fault)');
+		WHEN 'consultaRespuestaTransaccion' THEN
+			THROW USER EXCEPTION MESSAGE(4) VALUES('Error al consultar respuesta de transacción (fault)');
+		END CASE;
+		
+		RETURN FALSE;
+	END;
+END MODULE;
+
+
+CREATE COMPUTE MODULE Transaccion_GenerarRespuestaMQ
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET Environment.actor = 'WL';
+		IF InputRoot.XMLNSC.ns9:guardaRespuestaTransaccionResponse.estatus = 'false' THEN
+			THROW USER EXCEPTION MESSAGE(1) VALUES('Error al guardar respuesta de transacción (false)');
+		END IF;
+		IF InputRoot.XMLNSC.ns9:generaTransaccionResponse.respuestaTransaccion.numTransaccion = '0' THEN
+			THROW USER EXCEPTION MESSAGE(5) VALUES('Línea de captura inexistente');
+		END IF;
+		SET OutputRoot.MQMD = Environment.MQMD;
+		SET OutputRoot.XMLNSC = InputRoot.XMLNSC;
+		SET OutputRoot.XMLNSC.[1].DetalleTransaccion = Environment.DetalleTransaccion;
+		SET OutputLocalEnvironment.Destination.MQ.DestinationData.queueName = Environment.MQMD.ReplyToQ;
+		RETURN TRUE;
+	END;
+END MODULE;

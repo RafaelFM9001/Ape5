@@ -1,0 +1,31 @@
+
+
+Importing file: C:\WS\ProtocoloBancosV2\ProtocolosBancosContracts_Sources\transaccionPagos\transaccionPagos.wsdl
+
+The WSDL import will proceed with bindings TransaccionWsPagosPortBinding.
+Creating wsdl schema document for file:///C:/WS/ProtocoloBancosV2/ProtocolosBancosContracts_Sources/transaccionPagos/transaccionPagos.wsdl.
+Parsing wsdl binding {http://impl.webservice.util.web.wstran.ce.siat.sat.gob.mx/}TransaccionWsPagosPortBinding.
+Parsing wsdl binding input generaTransaccion.
+Parsing wsdl binding output generaTransaccion.
+Parsing wsdl binding fault WsTransException.
+Parsing wsdl binding input guardaRespuestaTransaccion.
+Parsing wsdl binding output guardaRespuestaTransaccion.
+Parsing wsdl binding fault WsTransException.
+Parsing wsdl binding input consultaRespuestaTransaccion.
+Parsing wsdl binding output consultaRespuestaTransaccion.
+Parsing wsdl binding fault WsTransException.
+Processing doc style for operation generaTransaccion.
+Processing doc style for operation guardaRespuestaTransaccion.
+Processing doc style for operation consultaRespuestaTransaccion.
+Populating WSDL schema transaccionPagos.xsd.
+Creating file transaccionPagos.xsd in the workspace.
+Creating file /ProtocoloBancosContracts/transaccionPagos_schema1.xsd in the workspace.
+Copying source WSDL transaccionPagos.wsdl to transaccionPagos.wsdl.
+
+Elapsed time processing this message definition file: 0.726 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

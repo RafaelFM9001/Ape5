@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ComIbmMQInput.msgnode="ComIbmMQInput.msgnode" xmlns:ComIbmMQOutput.msgnode="ComIbmMQOutput.msgnode" xmlns:ComIbmSOAPExtract.msgnode="ComIbmSOAPExtract.msgnode" xmlns:ComIbmSOAPRequest.msgnode="ComIbmSOAPRequest.msgnode" xmlns:ComIbmTrace.msgnode="ComIbmTrace.msgnode" xmlns:ExceptionManagement.subflow="ExceptionManagement.subflow" xmlns:ThrowException_XMLValidation.subflow="ThrowException_XMLValidation.subflow"
+    xmlns:XMLValidator.msgnode="XMLValidator.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="mx/gob/sat/matce/protocolobancos/proxy/mq/Encriptacion.msgflow"
+    nsPrefix="mx_gob_sat_matce_protocolobancos_proxy_mq_Encriptacion.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.SchemaLocation" name="SchemaLocation" defaultValueLiteral="http://ws.web.cripto.matce.sat.gob.mx/ file:///C:/shared/XSD/ProtocoloBancos/Ws_EncripcionXmlService/Ws_EncripcionXml_schema1.xsd">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <translation xmi:type="utility:TranslatableString" key="Encriptacion" bundleName="mx/gob/sat/matce/protocolobancos/proxy/mq/Encriptacion" pluginId="ProtocoloBancosBackEnd"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ProtocoloBancosBackEnd/icons/full/obj16/Encriptacion.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ProtocoloBancosBackEnd/icons/full/obj30/Encriptacion.gif"/>
+    <longDescription xmi:type="utility:ConstantString" string="Propósito: Servicio Proxy para el WS de Encriptación y desencriptación de XMLs.&#xD;&#xA;Autor: Oscar Daniel Jiménez Gutiérrez - Softtek&#xD;&#xA;Fecha de creación: Enero 2018"/>
+    <version xmi:type="utility:ConstantString" string="1.0"/>
+    <composition>
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="10,94" queueName="PB.MENSAJE.DESENCRIPTAR.REQ" messageDomainProperty="XMLNSC" transactionMode="no">
+        <translation xmi:type="utility:ConstantString" string="PB.MENSAJE.DESENCRIPTAR.REQ"/>
+      </nodes>
+      <nodes xmi:type="ComIbmSOAPRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="487,99" wsdlFileName="Ws_EncripcionXmlService.wsdl" selectedPortType="Ws_EncripcionXml" selectedBinding="Ws_EncripcionXmlPortBinding" selectedOperation="encriptarXml" selectedPort="Ws_EncripcionXmlPort" targetNamespace="http://ws.web.cripto.matce.sat.gob.mx/" useHTTPTransport="true" webServiceURL="http://192.168.5.137:7101/app/PE/cet/WS_CifradoXml/Ws_EncripcionXmlPort" requestTimeout="25" sslProtocol="TLS">
+        <translation xmi:type="utility:ConstantString" string="SOAPEncriptacion"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="185,94" computeExpression="esql://routine/mx.gob.sat.matce.protocolobancos.proxy.mq#Encriptacion_GetDetalleTransaccion.Main" computeMode="all">
+        <translation xmi:type="utility:ConstantString" string="GetDetalleTransaccion"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="773,237" computeExpression="esql://routine/mx.gob.sat.matce.protocolobancos.proxy.mq#Encriptacion_GenerarRespuestaMQ.Main" computeMode="all">
+        <translation xmi:type="utility:ConstantString" string="GenerarRespuestaMQ"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="305,95" destination="file" filePath="C:/shared/logs/ProtocoloBancos/Encriptacion.log" pattern="Encriptacion Request=========================================================================================&#xD;&#xA;LineaCaptura:${Environment.DetalleTransaccion.lc} NumTrans:${Environment.DetalleTransaccion.numTransaccion} FechaTrans:${Environment.DetalleTransaccion.timestampTransaction} FechaLog:${CURRENT_TIMESTAMP} &#xD;&#xA;ServicioConsumidor:${Environment.DetalleTransaccion.servicio} OperacionRequerida:${LocalEnvironment.Destination.SOAP.Request.Operation}&#xD;&#xA;MsgFlow:${Environment.Broker.MessageFlowLabel} ExGroup:${Environment.Broker.ExecutionGroupLabel} Brk:${Environment.Broker.BrokerName}&#xD;&#xA;${Body}">
+        <translation xmi:type="utility:ConstantString" string="EncriptacionReq"/>
+      </nodes>
+      <nodes xmi:type="ThrowException_XMLValidation.subflow:FCMComposite_1" xmi:id="FCMComposite_1_7" location="583,0" rotation="BOTTOM_TO_TOP">
+        <translation xmi:type="utility:ConstantString" string="ThrowException_XMLValidation"/>
+      </nodes>
+      <nodes xmi:type="XMLValidator.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="404,100">
+        <translation xmi:type="utility:ConstantString" string="ValidateReq"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="570,99" destination="file" filePath="C:/shared/logs/ProtocoloBancos/Encriptacion.log" pattern="Encriptacion Response=========================================================================================&#xD;&#xA;LineaCaptura:${Environment.DetalleTransaccion.lc} NumTrans:${Environment.DetalleTransaccion.numTransaccion} FechaTrans:${Environment.DetalleTransaccion.timestampTransaction} FechaLog:${CURRENT_TIMESTAMP} &#xD;&#xA;ServicioConsumidor:${Environment.DetalleTransaccion.servicio} OperacionRequerida:${LocalEnvironment.Destination.SOAP.Request.Operation}&#xD;&#xA;MsgFlow:${Environment.Broker.MessageFlowLabel} ExGroup:${Environment.Broker.ExecutionGroupLabel} Brk:${Environment.Broker.BrokerName}&#xD;&#xA;${Body}">
+        <translation xmi:type="utility:ConstantString" string="EncriptacionRes"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="539,166" destination="file" filePath="C:/shared/logs/ProtocoloBancos/Encriptacion.log" pattern="Encriptacion Fault=========================================================================================&#xD;&#xA;LineaCaptura:${Environment.DetalleTransaccion.lc} NumTrans:${Environment.DetalleTransaccion.numTransaccion} FechaTrans:${Environment.DetalleTransaccion.timestampTransaction} FechaLog:${CURRENT_TIMESTAMP} &#xD;&#xA;ServicioConsumidor:${Environment.DetalleTransaccion.servicio} OperacionRequerida:${LocalEnvironment.Destination.SOAP.Request.Operation}&#xD;&#xA;MsgFlow:${Environment.Broker.MessageFlowLabel} ExGroup:${Environment.Broker.ExecutionGroupLabel} Brk:${Environment.Broker.BrokerName}&#xD;&#xA;${Body}">
+        <translation xmi:type="utility:ConstantString" string="EncriptacionFault"/>
+      </nodes>
+      <nodes xmi:type="XMLValidator.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_11" location="745,104">
+        <translation xmi:type="utility:ConstantString" string="ValidateRes"/>
+      </nodes>
+      <nodes xmi:type="ComIbmSOAPExtract.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_12" location="659,99">
+        <translation xmi:type="utility:ConstantString" string="SOAP Extract"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_14" location="881,238" destinationMode="list" transactionMode="no">
+        <translation xmi:type="utility:ConstantString" string="DYNAMIC"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_15" location="27,232" queueName="PB.MENSAJE.ENCRIPTAR.REQ" messageDomainProperty="XMLNSC" transactionMode="no">
+        <translation xmi:type="utility:ConstantString" string="PB.MENSAJE.ENCRIPTAR.REQ"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="525,240" destination="file" filePath="C:/shared/logs/ProtocoloBancos/Encriptacion.log" pattern="Encriptacion Response Error=========================================================================================&#xD;&#xA;LineaCaptura:${Environment.DetalleTransaccion.lc} NumTrans:${Environment.DetalleTransaccion.numTransaccion} FechaTrans:${Environment.DetalleTransaccion.timestampTransaction} FechaLog:${CURRENT_TIMESTAMP} &#xD;&#xA;ServicioConsumidor:${Environment.DetalleTransaccion.servicio} OperacionRequerida:${Environment.Operation}&#xD;&#xA;MsgFlow:${Environment.Broker.MessageFlowLabel} ExGroup:${Environment.Broker.ExecutionGroupLabel} Brk:${Environment.Broker.BrokerName}&#xD;&#xA;${Body}">
+        <translation xmi:type="utility:ConstantString" string="EncriptacionResError"/>
+      </nodes>
+      <nodes xmi:type="ExceptionManagement.subflow:FCMComposite_1" xmi:id="FCMComposite_1_16" location="282,240" exceptionPrefix="01">
+        <translation xmi:type="utility:ConstantString" string="ExceptionManagement"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_17" location="213,240" destination="file" filePath="C:/shared/logs/ProtocoloBancos/EncriptacionError.log" pattern="Encriptacion Error=========================================================================================&#xD;&#xA;LineaCaptura:${Environment.DetalleTransaccion.lc} NumTrans:${Environment.DetalleTransaccion.numTransaccion} FechaTrans:${Environment.DetalleTransaccion.timestampTransaction} FechaLog:${CURRENT_TIMESTAMP} &#xD;&#xA;ServicioConsumidor:${Environment.DetalleTransaccion.servicio} OperacionRequerida:${Environment.Operation}&#xD;&#xA;MsgFlow:${Environment.Broker.MessageFlowLabel} ExGroup:${Environment.Broker.ExecutionGroupLabel} Brk:${Environment.Broker.BrokerName}&#xD;&#xA;ExceptionList:&#xD;&#xA;${ExceptionList}">
+        <translation xmi:type="utility:ConstantString" string="Exception"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_18" location="637,166" computeExpression="esql://routine/mx.gob.sat.matce.protocolobancos.proxy.mq#Encriptacion_FaultException.Main" computeMode="destinationAndMessage">
+        <translation xmi:type="utility:ConstantString" string="FaultException"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.Invalid" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.Out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_10" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_12" targetNode="FCMComposite_1_12" sourceNode="FCMComposite_1_9" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_14" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_11" sourceTerminalName="OutTerminal.Out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_15" targetNode="FCMComposite_1_10" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.fault" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_17" targetNode="FCMComposite_1_14" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_15" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_11" sourceTerminalName="OutTerminal.Invalid" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_17" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.catch" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_9" targetNode="FCMComposite_1_17" sourceNode="FCMComposite_1_15" sourceTerminalName="OutTerminal.catch" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_11" targetNode="FCMComposite_1_16" sourceNode="FCMComposite_1_17" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_19" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_16" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_16" targetNode="FCMComposite_1_18" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_18" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_20" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_12" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer>
+      <propertyDescriptor groupName="Group.XMLValidator" configurable="true" userDefined="true" describedAttribute="Property.SchemaLocation">
+        <propertyName xmi:type="utility:TranslatableString" key="Property.SchemaLocation" bundleName="mx/gob/sat/matce/protocolobancos/proxy/mq/Encriptacion" pluginId="ProtocoloBancosBackEnd"/>
+      </propertyDescriptor>
+    </propertyOrganizer>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

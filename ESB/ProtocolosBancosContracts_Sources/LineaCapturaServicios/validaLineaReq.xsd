@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	version="1.0">
+	<xs:element name="ValidaLinea" type="ValidaLineaReq" />
+	<xs:complexType name="ValidaLineaReq">
+		<xs:sequence>
+			<xs:element name="cveBanco">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:pattern value="[0-9]{5}" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="importe">
+				<xs:simpleType>
+					<xs:restriction base="xs:long">
+						<xs:totalDigits value="14" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="fechaHoraEnvio">
+				<xs:simpleType>
+					<xs:restriction base="xs:dateTime">
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

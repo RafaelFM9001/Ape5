@@ -1,0 +1,65 @@
+BROKER SCHEMA mx.gob.sat.matce.protocolobancos.lineacaptura.validar
+
+/*
+*
+* Autor: Oscar Daniel Jiménez Gutiérrez - Softtek
+* Fecha de creación: Enero 2018 Version: 1.0
+*/
+
+
+CREATE COMPUTE MODULE EvaluateResponses
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE ref_LineaCapturaValidar REFERENCE TO Environment;
+		MOVE ref_LineaCapturaValidar TO InputRoot.ComIbmAggregateReplyBody.LineaCapturaValidar.XMLNSC;
+		DECLARE ref_FirmaValidar REFERENCE TO Environment;
+		MOVE ref_FirmaValidar TO InputRoot.ComIbmAggregateReplyBody.FirmaValidar.XMLNSC;
+		
+		--Obtener el DetalleTransaccion de alguna rama de las respuestas de agregación
+		IF EXISTS(ref_LineaCapturaValidar.*:validaLineaCapturaResponse.DetalleTransaccion[]) THEN
+			SET Environment.DetalleTransaccion = ref_LineaCapturaValidar.*:validaLineaCapturaResponse.DetalleTransaccion;
+			SET Environment.MsgValidarLCRes = ref_LineaCapturaValidar.*:validaLineaCapturaResponse;
+			DELETE FIELD Environment.MsgValidarLCRes.DetalleTransaccion;
+		ELSE
+			SET Environment.DetalleTransaccion = ref_FirmaValidar.*:validateXmlSignResponse.DetalleTransaccion;
+		END IF;
+		
+		--Si no hubo error en la validación de firma ni en la validación de LC debe aplicarse el bloqueo 
+		IF NOT EXISTS(ref_FirmaValidar.Error[]) AND
+			NOT EXISTS(ref_LineaCapturaValidar.Error[]) THEN
+			SET Environment.DetalleTransaccion.respuestaTransaccion = ref_LineaCapturaValidar.*:validaLineaCapturaResponse.resultadoValidaLinea.codigoValidacion;
+			IF ref_LineaCapturaValidar.*:validaLineaCapturaResponse.resultadoValidaLinea.codigoValidacion = 'A' THEN
+				--Invocación de bloqueo
+				SET OutputRoot.XMLNSC.ns:bloqueoLineaCaptura.DetalleTransaccion = Environment.DetalleTransaccion;
+				SET OutputRoot.XMLNSC.ns13:bloqueoLineaCaptura.bloqueoLineaCapturaInfo.lc = ref_LineaCapturaValidar.*:validaLineaCapturaResponse.resultadoValidaLinea.lc;
+				SET OutputRoot.XMLNSC.ns13:bloqueoLineaCaptura.bloqueoLineaCapturaInfo.cveBanco = ref_LineaCapturaValidar.*:validaLineaCapturaResponse.resultadoValidaLinea.cveBanco;
+				SET OutputRoot.XMLNSC.ns13:bloqueoLineaCaptura.bloqueoLineaCapturaInfo.fechaBloqueo = ref_LineaCapturaValidar.*:validaLineaCapturaResponse.resultadoValidaLinea.fechaHoraEnvio;
+				SET OutputRoot.XMLNSC.ns13:bloqueoLineaCaptura.bloqueoLineaCapturaInfo.status = 1;
+				--SET Environment.resultadoValidaLinea = ref_LineaCapturaValidar.*:validaLineaCapturaResponse.*:resultadoValidaLinea;--resultadoValidaLinea
+			PROPAGATE TO TERMINAL 'out1';
+			ELSE
+				DECLARE ref_MsgValidarLCRes REFERENCE TO Environment.MsgValidarLCRes; 
+				SET OutputRoot.XMLNSC.ValidarLineaCaptura.response.Respuesta = ref_MsgValidarLCRes.resultadoValidaLinea;
+				PROPAGATE TO TERMINAL 'out';
+				RETURN FALSE;
+			END IF;
+	
+		END IF;
+		
+		--Si hubo error en la firma se debe indicar dicho error
+		IF EXISTS(ref_FirmaValidar.Error[]) THEN
+			SET OutputRoot.XMLNSC.Error = ref_FirmaValidar.Error;
+			PROPAGATE TO TERMINAL 'out4';
+			RETURN FALSE; --Pueden presentarse dos errores diferentes por ello el flujo debe terminar al encontrar el primero
+		END IF;
+		
+		--Si hubo error en la validación de LC
+		IF EXISTS(ref_LineaCapturaValidar.Error[]) THEN
+			SET OutputRoot.XMLNSC.Error = ref_LineaCapturaValidar.Error;
+			PROPAGATE TO TERMINAL 'out4';
+			RETURN FALSE; --Pueden presentarse dos errores diferentes por ello el flujo debe terminar al encontrar el primero
+		END IF;
+		
+		RETURN FALSE;
+	END;
+END MODULE;

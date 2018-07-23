@@ -1,0 +1,1 @@
+mqsiapplybaroverride -b C:\WS\ProtocoloBancos\ProtocoloBancosBackEnd_Deploy\ProtocoloBancosValidarLineaCapturaBackEnd.bar -p C:\WS\ProtocoloBancos\ProtocoloBancosBackEnd_Deploy\dev_local.properties -o C:\WS\ProtocoloBancos\ProtocoloBancosBackEnd_Deploy\ProtocoloBancosValidarLineaCapturaBackEnd_Local.bar

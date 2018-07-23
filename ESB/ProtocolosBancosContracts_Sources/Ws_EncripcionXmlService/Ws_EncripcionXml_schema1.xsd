@@ -1,0 +1,29 @@
+<!--
+ Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5. 
+-->
+<xs:schema xmlns:tns="http://ws.web.cripto.matce.sat.gob.mx/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws.web.cripto.matce.sat.gob.mx/">
+<xs:element name="desencriptarXml" type="tns:desencriptarXml"/>
+<xs:element name="desencriptarXmlResponse" type="tns:desencriptarXmlResponse"/>
+<xs:element name="encriptarXml" type="tns:encriptarXml"/>
+<xs:element name="encriptarXmlResponse" type="tns:encriptarXmlResponse"/>
+<xs:complexType name="desencriptarXml">
+<xs:sequence>
+<xs:element name="xmlEncriptado" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="desencriptarXmlResponse">
+<xs:sequence>
+<xs:element name="xmlLlano" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="encriptarXml">
+<xs:sequence>
+<xs:element name="xmlLlano" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="encriptarXmlResponse">
+<xs:sequence>
+<xs:element name="xmlEncriptado" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

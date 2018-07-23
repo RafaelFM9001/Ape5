@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Broker>
+	<CompiledApplication>
+		<ConfigurableProperty uri="startMode" />
+	</CompiledApplication>
+	<CompiledMessageFlow
+		name="mx.gob.sat.matce.protocolobancos.services.Encriptacion">
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#additionalInstances" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#commitCount" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#commitInterval" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#coordinatedTransaction" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#consumerPolicySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#providerPolicySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#consumerPolicySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#providerPolicySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#monitoringProfile" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#startMode" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#startInstancesWhenFlowStarts" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#AddDetalleTransaccion.connectDatasourceBeforeFlowStarts" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#AddDetalleTransaccion.dataSource" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#AddDetalleTransaccion.validateMaster" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#GetDetalleTransaccion.connectDatasourceBeforeFlowStarts" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#GetDetalleTransaccion.dataSource" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#GetDetalleTransaccion.validateMaster" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#PB.MENSAJE.ENCRIPTACION.REQ.additionalInstances" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#PB.MENSAJE.ENCRIPTACION.REQ.componentLevel" />
+		<ConfigurableProperty override="PB.MENSAJE.ENCRIPTACION.REQ"
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#PB.MENSAJE.ENCRIPTACION.REQ.queueName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#PB.MENSAJE.ENCRIPTACION.REQ.resetBrowseTimeout" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#PB.MENSAJE.ENCRIPTACION.REQ.securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#PB.MENSAJE.ENCRIPTACION.REQ.serializationToken" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#PB.MENSAJE.ENCRIPTACION.REQ.topicProperty" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#PB.MENSAJE.ENCRIPTACION.REQ.validateMaster" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#PB.MENSAJE.ENCRIPTACION.RES.queueManagerName" />
+		<ConfigurableProperty override="PB.MENSAJE.ENCRIPTACION.RES"
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#PB.MENSAJE.ENCRIPTACION.RES.queueName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#PB.MENSAJE.ENCRIPTACION.RES.replyToQ" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#PB.MENSAJE.ENCRIPTACION.RES.replyToQMgr" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#PB.MENSAJE.ENCRIPTACION.RES.securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#PB.MENSAJE.ENCRIPTACION.RES.validateMaster" />
+	</CompiledMessageFlow>
+	<CompiledMessageFlow
+		name="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura">
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#additionalInstances" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#commitCount" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#commitInterval" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#coordinatedTransaction" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#consumerPolicySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#providerPolicySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#consumerPolicySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#providerPolicySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#monitoringProfile" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#startMode" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#startInstancesWhenFlowStarts" />
+		<ConfigurableProperty
+			override="/var/mqsi/logs/protocolobancos/ValidarFirma.log"
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#ConsultarValidacionLineaCapturaReq.filePath" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#PB.LINEACAPTURA.CONSULTARVALIDACION.REQ.additionalInstances" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#PB.LINEACAPTURA.CONSULTARVALIDACION.REQ.componentLevel" />
+		<ConfigurableProperty override="PB.MENSAJE.FIRMA.REQ"
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#PB.LINEACAPTURA.CONSULTARVALIDACION.REQ.queueName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#PB.LINEACAPTURA.CONSULTARVALIDACION.REQ.resetBrowseTimeout" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#PB.LINEACAPTURA.CONSULTARVALIDACION.REQ.securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#PB.LINEACAPTURA.CONSULTARVALIDACION.REQ.serializationToken" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#PB.LINEACAPTURA.CONSULTARVALIDACION.REQ.topicProperty" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#PB.LINEACAPTURA.CONSULTARVALIDACION.REQ.validateMaster" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#PB.LINEACAPTURA.ORQUESTACION.RES.queueManagerName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#PB.LINEACAPTURA.ORQUESTACION.RES.queueName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#PB.LINEACAPTURA.ORQUESTACION.RES.replyToQ" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#PB.LINEACAPTURA.ORQUESTACION.RES.replyToQMgr" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#PB.LINEACAPTURA.ORQUESTACION.RES.securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#PB.LINEACAPTURA.ORQUESTACION.RES.validateMaster" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#SOAPValidarFirma.acceptCompressedResponses" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#SOAPValidarFirma.allowMTOM" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#SOAPValidarFirma.allowedSSLCiphers" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#SOAPValidarFirma.hostnameChecking" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#SOAPValidarFirma.httpProxyLocation" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#SOAPValidarFirma.keyAlias" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#SOAPValidarFirma.policySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#SOAPValidarFirma.policySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#SOAPValidarFirma.requestCompressionType" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#SOAPValidarFirma.requestTimeout" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#SOAPValidarFirma.securityProfileName" />
+		<ConfigurableProperty override="TLS"
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#SOAPValidarFirma.sslProtocol" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#SOAPValidarFirma.validateFailureAction" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#SOAPValidarFirma.validateMaster" />
+		<ConfigurableProperty
+			override="http://localhost:7101/AplPagosReferenciados-WS_FirmaXml-context-root/WS_FirmarXmlPort"
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#SOAPValidarFirma.webServiceURL" />
+		<ConfigurableProperty
+			override="/var/mqsi/logs/protocolobancos/ValidarFirma.log"
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#ValidarFirmaFault.filePath" />
+		<ConfigurableProperty
+			override="/var/mqsi/logs/protocolobancos/ValidarFirma.log"
+			uri="mx.gob.sat.matce.protocolobancos.services.ConsultarResultadoValidacionLineaCaptura#ValidarFirmaRes.filePath" />
+	</CompiledMessageFlow>
+	<CompiledMessageFlow name="mx.gob.sat.matce.protocolobancos.services.Firma">
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#additionalInstances" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#commitCount" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#commitInterval" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#coordinatedTransaction" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#consumerPolicySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#providerPolicySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#consumerPolicySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#providerPolicySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#monitoringProfile" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#startMode" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#startInstancesWhenFlowStarts" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#AddDetalleTransaccion.connectDatasourceBeforeFlowStarts" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#AddDetalleTransaccion.dataSource" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#AddDetalleTransaccion.validateMaster" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#DYNAMICQ.RES.queueManagerName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#DYNAMICQ.RES.queueName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#DYNAMICQ.RES.replyToQ" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#DYNAMICQ.RES.replyToQMgr" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#DYNAMICQ.RES.securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#DYNAMICQ.RES.validateMaster" />
+		<ConfigurableProperty override="/shared/logs/ProtocoloBancos/Firma.log"
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#FirmaReq.filePath" />
+		<ConfigurableProperty override="/shared/logs/ProtocoloBancos/Firma.log"
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#FirmaRes.filePath" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#GetDetalleTransaccion.connectDatasourceBeforeFlowStarts" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#GetDetalleTransaccion.dataSource" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#GetDetalleTransaccion.validateMaster" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#PB.MENSAJE.FIRMA.REQ.additionalInstances" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#PB.MENSAJE.FIRMA.REQ.componentLevel" />
+		<ConfigurableProperty override="PB.MENSAJE.FIRMA.REQ"
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#PB.MENSAJE.FIRMA.REQ.queueName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#PB.MENSAJE.FIRMA.REQ.resetBrowseTimeout" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#PB.MENSAJE.FIRMA.REQ.securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#PB.MENSAJE.FIRMA.REQ.serializationToken" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#PB.MENSAJE.FIRMA.REQ.topicProperty" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#PB.MENSAJE.FIRMA.REQ.validateMaster" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#SOAPFirma.acceptCompressedResponses" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#SOAPFirma.allowMTOM" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#SOAPFirma.allowedSSLCiphers" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#SOAPFirma.hostnameChecking" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#SOAPFirma.httpProxyLocation" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#SOAPFirma.keyAlias" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#SOAPFirma.policySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#SOAPFirma.policySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#SOAPFirma.requestCompressionType" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#SOAPFirma.requestTimeout" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#SOAPFirma.securityProfileName" />
+		<ConfigurableProperty override="TLS"
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#SOAPFirma.sslProtocol" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#SOAPFirma.validateFailureAction" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#SOAPFirma.validateMaster" />
+		<ConfigurableProperty
+			override="http://localhost:7101/AplPagosReferenciados-WS_FirmaXml-context-root/WS_FirmarXmlPort"
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#SOAPFirma.webServiceURL" />
+		<ConfigurableProperty override="/shared/logs/ProtocoloBancos/Firma.log"
+			uri="mx.gob.sat.matce.protocolobancos.services.Firma#ValidarFirmaFault.filePath" />
+	</CompiledMessageFlow>
+	<CompiledMessageFlow
+		name="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion">
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#additionalInstances" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#commitCount" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#commitInterval" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#coordinatedTransaction" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#consumerPolicySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#providerPolicySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#consumerPolicySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#providerPolicySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#monitoringProfile" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#startMode" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#startInstancesWhenFlowStarts" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#ObtenerTranFault.filePath" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#ObtenerTranRes.filePath" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#ObtieneTranReq.filePath" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#PB.TRANSACCION.OBTENER.REQ.additionalInstances" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#PB.TRANSACCION.OBTENER.REQ.componentLevel" />
+		<ConfigurableProperty override="PB.TRANSACCION.OBTENER.REQ"
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#PB.TRANSACCION.OBTENER.REQ.queueName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#PB.TRANSACCION.OBTENER.REQ.resetBrowseTimeout" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#PB.TRANSACCION.OBTENER.REQ.securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#PB.TRANSACCION.OBTENER.REQ.serializationToken" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#PB.TRANSACCION.OBTENER.REQ.topicProperty" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#PB.TRANSACCION.OBTENER.REQ.validateMaster" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#PB.TRANSACCION.OBTENER.RES.queueManagerName" />
+		<ConfigurableProperty override="PB.TRANSACCION.OBTENER.RES"
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#PB.TRANSACCION.OBTENER.RES.queueName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#PB.TRANSACCION.OBTENER.RES.replyToQ" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#PB.TRANSACCION.OBTENER.RES.replyToQMgr" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#PB.TRANSACCION.OBTENER.RES.securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#PB.TRANSACCION.OBTENER.RES.validateMaster" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#SOAPReqObtenerTran.acceptCompressedResponses" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#SOAPReqObtenerTran.allowMTOM" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#SOAPReqObtenerTran.allowedSSLCiphers" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#SOAPReqObtenerTran.hostnameChecking" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#SOAPReqObtenerTran.httpProxyLocation" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#SOAPReqObtenerTran.keyAlias" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#SOAPReqObtenerTran.policySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#SOAPReqObtenerTran.policySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#SOAPReqObtenerTran.requestCompressionType" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#SOAPReqObtenerTran.requestTimeout" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#SOAPReqObtenerTran.securityProfileName" />
+		<ConfigurableProperty override="TLS"
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#SOAPReqObtenerTran.sslProtocol" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#SOAPReqObtenerTran.validateFailureAction" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#SOAPReqObtenerTran.validateMaster" />
+		<ConfigurableProperty
+			override="http://127.0.0.1:7101/AplPagosReferenciados-WS_EncriptacionXml-context-root/Ws_EncripcionXmlPort"
+			uri="mx.gob.sat.matce.protocolobancos.services.ObtenerTransaccion#SOAPReqObtenerTran.webServiceURL" />
+	</CompiledMessageFlow>
+	<CompiledMessageFlow
+		name="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura">
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#additionalInstances" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#commitCount" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#commitInterval" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#coordinatedTransaction" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#consumerPolicySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#providerPolicySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#consumerPolicySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#providerPolicySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#monitoringProfile" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#startMode" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#startInstancesWhenFlowStarts" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#AddDetalleTransaccion.connectDatasourceBeforeFlowStarts" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#AddDetalleTransaccion.dataSource" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#AddDetalleTransaccion.validateMaster" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#BloqueoLineaCapturaFault.filePath" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#BloqueoLineaCapturaReq.filePath" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#BloqueoLineaCapturaRes.filePath" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#DYNAMICQ.RES.queueManagerName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#DYNAMICQ.RES.queueName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#DYNAMICQ.RES.replyToQ" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#DYNAMICQ.RES.replyToQMgr" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#DYNAMICQ.RES.securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#DYNAMICQ.RES.validateMaster" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#GetDetalleTransaccion.connectDatasourceBeforeFlowStarts" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#GetDetalleTransaccion.dataSource" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#GetDetalleTransaccion.validateMaster" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#PB.LINEACAPTURA.BLOQUEO.REQ.additionalInstances" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#PB.LINEACAPTURA.BLOQUEO.REQ.componentLevel" />
+		<ConfigurableProperty override="PB.LINEACAPTURA.BLOQUEO.REQ"
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#PB.LINEACAPTURA.BLOQUEO.REQ.queueName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#PB.LINEACAPTURA.BLOQUEO.REQ.resetBrowseTimeout" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#PB.LINEACAPTURA.BLOQUEO.REQ.securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#PB.LINEACAPTURA.BLOQUEO.REQ.serializationToken" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#PB.LINEACAPTURA.BLOQUEO.REQ.topicProperty" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#PB.LINEACAPTURA.BLOQUEO.REQ.validateMaster" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#SOAPBloqueLineaCaptura.acceptCompressedResponses" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#SOAPBloqueLineaCaptura.allowMTOM" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#SOAPBloqueLineaCaptura.allowedSSLCiphers" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#SOAPBloqueLineaCaptura.hostnameChecking" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#SOAPBloqueLineaCaptura.httpProxyLocation" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#SOAPBloqueLineaCaptura.keyAlias" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#SOAPBloqueLineaCaptura.policySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#SOAPBloqueLineaCaptura.policySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#SOAPBloqueLineaCaptura.requestCompressionType" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#SOAPBloqueLineaCaptura.requestTimeout" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#SOAPBloqueLineaCaptura.securityProfileName" />
+		<ConfigurableProperty override="TLS"
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#SOAPBloqueLineaCaptura.sslProtocol" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#SOAPBloqueLineaCaptura.validateFailureAction" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#SOAPBloqueLineaCaptura.validateMaster" />
+		<ConfigurableProperty
+			override="http://localhost:7101/AplPagosReferenciados-IntercambioBancos-SAT-context-root/WS_PagosReferenciadosPort"
+			uri="mx.gob.sat.matce.protocolobancos.services.BloqueoLineaCaptura#SOAPBloqueLineaCaptura.webServiceURL" />
+	</CompiledMessageFlow>
+	<CompiledMessageFlow
+		name="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq">
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#additionalInstances" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#commitCount" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#commitInterval" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#coordinatedTransaction" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#consumerPolicySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#providerPolicySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#consumerPolicySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#providerPolicySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#monitoringProfile" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#startMode" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#startInstancesWhenFlowStarts" />
+		<ConfigurableProperty override="AggProtocoloBancos"
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#AggProtocoloBancosReq.aggregateName" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#GuardarTransaccionEnAmbiente.connectDatasourceBeforeFlowStarts" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#GuardarTransaccionEnAmbiente.dataSource" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#GuardarTransaccionEnAmbiente.validateMaster" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#Orchestrate.connectDatasourceBeforeFlowStarts" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#Orchestrate.dataSource" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#Orchestrate.validateMaster" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.LINEACAPTURA.BLOQUEO.REQ.queueManagerName" />
+		<ConfigurableProperty override="PB.LINEACAPTURA.BLOQUEO.REQ"
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.LINEACAPTURA.BLOQUEO.REQ.queueName" />
+		<ConfigurableProperty override="QL.ORS.PRB.RES.001"
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.LINEACAPTURA.BLOQUEO.REQ.replyToQ" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.LINEACAPTURA.BLOQUEO.REQ.replyToQMgr" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.LINEACAPTURA.BLOQUEO.REQ.securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.LINEACAPTURA.BLOQUEO.REQ.validateMaster" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.LINEACAPTURA.VALIDACION.REQ.additionalInstances" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.LINEACAPTURA.VALIDACION.REQ.componentLevel" />
+		<ConfigurableProperty override="PB.LINEACAPTURA.VALIDACION.REQ"
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.LINEACAPTURA.VALIDACION.REQ.queueName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.LINEACAPTURA.VALIDACION.REQ.resetBrowseTimeout" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.LINEACAPTURA.VALIDACION.REQ.securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.LINEACAPTURA.VALIDACION.REQ.serializationToken" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.LINEACAPTURA.VALIDACION.REQ.topicProperty" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.LINEACAPTURA.VALIDACION.REQ.validateMaster" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.MENSAJE.FIRMA.REQ.queueManagerName" />
+		<ConfigurableProperty override="PB.MENSAJE.FIRMA.REQ"
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.MENSAJE.FIRMA.REQ.queueName" />
+		<ConfigurableProperty override="QL.ORS.PRB.RES.001"
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.MENSAJE.FIRMA.REQ.replyToQ" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.MENSAJE.FIRMA.REQ.replyToQMgr" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.MENSAJE.FIRMA.REQ.securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.MENSAJE.FIRMA.REQ.validateMaster" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.PAGOSREF.VALLINEACAP.RECIBIRCOBROS.REQ.queueManagerName" />
+		<ConfigurableProperty override="PB.PAGOSREF.VALLINEACAP.RECIBIRCOBROS.REQ"
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.PAGOSREF.VALLINEACAP.RECIBIRCOBROS.REQ.queueName" />
+		<ConfigurableProperty override="QL.ORS.PRB.RES.001"
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.PAGOSREF.VALLINEACAP.RECIBIRCOBROS.REQ.replyToQ" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.PAGOSREF.VALLINEACAP.RECIBIRCOBROS.REQ.replyToQMgr" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.PAGOSREF.VALLINEACAP.RECIBIRCOBROS.REQ.securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.PAGOSREF.VALLINEACAP.RECIBIRCOBROS.REQ.validateMaster" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.TRANSACCION.OBTENER.REQ.queueManagerName" />
+		<ConfigurableProperty override="PB.TRANSACCION.OBTENER.REQ"
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.TRANSACCION.OBTENER.REQ.queueName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.TRANSACCION.OBTENER.REQ.replyToQ" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.TRANSACCION.OBTENER.REQ.replyToQMgr" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.TRANSACCION.OBTENER.REQ.securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.TRANSACCION.OBTENER.REQ.validateMaster" />
+		<ConfigurableProperty override="PB.TRANSACCION.OBTENER.RES"
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.TRANSACCION.OBTENER.RES.queueName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQReq#PB.TRANSACCION.OBTENER.RES.validateMaster" />
+	</CompiledMessageFlow>
+	<CompiledMessageFlow
+		name="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes">
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#additionalInstances" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#commitCount" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#commitInterval" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#coordinatedTransaction" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#consumerPolicySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#providerPolicySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#consumerPolicySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#providerPolicySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#monitoringProfile" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#startMode" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#startInstancesWhenFlowStarts" />
+		<ConfigurableProperty override="AggProtocoloBancos"
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#AggProtocoloBancosRes.aggregateName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#PB.LINEACAPTURA.ORQUESTACION.RES.additionalInstances" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#PB.LINEACAPTURA.ORQUESTACION.RES.componentLevel" />
+		<ConfigurableProperty override="PB.LINEACAPTURA.ORQUESTACION.RES"
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#PB.LINEACAPTURA.ORQUESTACION.RES.queueName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#PB.LINEACAPTURA.ORQUESTACION.RES.resetBrowseTimeout" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#PB.LINEACAPTURA.ORQUESTACION.RES.securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#PB.LINEACAPTURA.ORQUESTACION.RES.serializationToken" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#PB.LINEACAPTURA.ORQUESTACION.RES.topicProperty" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#PB.LINEACAPTURA.ORQUESTACION.RES.validateMaster" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#PB.LINEACAPTURA.VALIDACION.RES.queueManagerName" />
+		<ConfigurableProperty override="PB.LINEACAPTURA.VALIDACION.RES"
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#PB.LINEACAPTURA.VALIDACION.RES.queueName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#PB.LINEACAPTURA.VALIDACION.RES.replyToQ" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#PB.LINEACAPTURA.VALIDACION.RES.replyToQMgr" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#PB.LINEACAPTURA.VALIDACION.RES.securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#PB.LINEACAPTURA.VALIDACION.RES.validateMaster" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#PrepareResponse.connectDatasourceBeforeFlowStarts" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#PrepareResponse.dataSource" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#PrepareResponse.validateMaster" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#ThrowException.connectDatasourceBeforeFlowStarts" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#ThrowException.dataSource" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.recepcion.ValidaLineaCapturaMQRes#ThrowException.validateMaster" />
+	</CompiledMessageFlow>
+	<CompiledMessageFlow
+		name="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro">
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#additionalInstances" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#commitCount" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#commitInterval" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#coordinatedTransaction" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#consumerPolicySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#providerPolicySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#consumerPolicySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#providerPolicySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#monitoringProfile" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#startMode" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#startInstancesWhenFlowStarts" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#AddDetalleTransaccion.connectDatasourceBeforeFlowStarts" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#AddDetalleTransaccion.dataSource" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#AddDetalleTransaccion.validateMaster" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#DYNAMICQ.RES.queueManagerName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#DYNAMICQ.RES.queueName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#DYNAMICQ.RES.replyToQ" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#DYNAMICQ.RES.replyToQMgr" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#DYNAMICQ.RES.securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#DYNAMICQ.RES.validateMaster" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#GetDetalleTransaccion.connectDatasourceBeforeFlowStarts" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#GetDetalleTransaccion.dataSource" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#GetDetalleTransaccion.validateMaster" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#PB.PAGOSREF.VALLINEACAP.RECIBIRCOBROS.REQ.additionalInstances" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#PB.PAGOSREF.VALLINEACAP.RECIBIRCOBROS.REQ.componentLevel" />
+		<ConfigurableProperty override="PB.PAGOSREF.VALLINEACAP.RECIBIRCOBROS.REQ"
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#PB.PAGOSREF.VALLINEACAP.RECIBIRCOBROS.REQ.queueName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#PB.PAGOSREF.VALLINEACAP.RECIBIRCOBROS.REQ.resetBrowseTimeout" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#PB.PAGOSREF.VALLINEACAP.RECIBIRCOBROS.REQ.securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#PB.PAGOSREF.VALLINEACAP.RECIBIRCOBROS.REQ.serializationToken" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#PB.PAGOSREF.VALLINEACAP.RECIBIRCOBROS.REQ.topicProperty" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#PB.PAGOSREF.VALLINEACAP.RECIBIRCOBROS.REQ.validateMaster" />
+		<ConfigurableProperty
+			override="/shared/logs/ProtocoloBancos/PagosReferenciados.log"
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#PagosReferenciadosFault.filePath" />
+		<ConfigurableProperty
+			override="/shared/logs/ProtocoloBancos/PagosReferenciados.log"
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#PagosReferenciadosReq.filePath" />
+		<ConfigurableProperty
+			override="/shared/logs/ProtocoloBancos/PagosReferenciados.log"
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#PagosReferenciadosRes.filePath" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#SOAPPagosReferenciados.acceptCompressedResponses" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#SOAPPagosReferenciados.allowMTOM" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#SOAPPagosReferenciados.allowedSSLCiphers" />
+		<ConfigurableProperty override="no"
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#SOAPPagosReferenciados.hostnameChecking" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#SOAPPagosReferenciados.httpProxyLocation" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#SOAPPagosReferenciados.keyAlias" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#SOAPPagosReferenciados.policySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#SOAPPagosReferenciados.policySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#SOAPPagosReferenciados.requestCompressionType" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#SOAPPagosReferenciados.requestTimeout" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#SOAPPagosReferenciados.securityProfileName" />
+		<ConfigurableProperty override="TLS"
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#SOAPPagosReferenciados.sslProtocol" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#SOAPPagosReferenciados.validateFailureAction" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#SOAPPagosReferenciados.validateMaster" />
+		<ConfigurableProperty
+			override="http://localhost:7101/AplPagosReferenciados-IntercambioBancos-SAT-context-root/WS_PagosReferenciadosPort"
+			uri="mx.gob.sat.matce.protocolobancos.services.PagosRef_ValidaLineaCap_RecibirMsgCobro#SOAPPagosReferenciados.webServiceURL" />
+	</CompiledMessageFlow>
+	<CompiledMessageFlow
+		name="mx.gob.sat.matce.protocolobancos.services.Encriptacion" type="subflow">
+		<ConfigurableProperty
+			override="http://127.0.0.1:7101/AplPagosReferenciados-WS_EncriptacionXml-context-root/Ws_EncripcionXmlPort"
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.webServiceURL" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.requestTimeout" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.httpProxyLocation" />
+		<ConfigurableProperty override="TLS"
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.sslProtocol" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.allowedSSLCiphers" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.requestCompressionType" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.acceptCompressedResponses" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.hostnameChecking" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.keyAlias" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.jmsDestination" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.jmsReplyToDestination" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.requestTimeoutJMS" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.initialContextFactory" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.locationJndiBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.connectionFactoryName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.targetService" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.deliveryMode" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.messagePriority" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.messageExpiration" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.messageType" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.securityProfileName" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.policySet" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.policySetBindings" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.allowMTOM" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.validateMaster" />
+		<ConfigurableProperty
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionSOAPReq.validateFailureAction" />
+		<ConfigurableProperty override="/shared/logs/ProtocoloBancos/Encripcion.log"
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionReq.filePath" />
+		<ConfigurableProperty override="/shared/logs/ProtocoloBancos/Encripcion.log"
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionRes.filePath" />
+		<ConfigurableProperty override="/shared/logs/ProtocoloBancos/Encripcion.log"
+			uri="mx.gob.sat.matce.protocolobancos.services.Encriptacion#EncriptacionFault.filePath" />
+	</CompiledMessageFlow>
+</Broker>

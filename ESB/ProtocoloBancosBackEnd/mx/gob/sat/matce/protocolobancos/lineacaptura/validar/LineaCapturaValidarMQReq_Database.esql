@@ -1,0 +1,20 @@
+BROKER SCHEMA mx.gob.sat.matce.protocolobancos.lineacaptura.validar
+
+
+/*
+*
+* Autor: Oscar Daniel Jiménez Gutiérrez - Softtek
+* Fecha de creación: Enero 2018 Version: 1.0
+*/
+
+
+DECLARE NoNamespaceSchemaLocation EXTERNAL CHARACTER '';
+
+CREATE DATABASE MODULE Set_NoNamespaceSchemaLocation
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET Environment.XMLValidator.NoNamespaceSchemaLocation = NoNamespaceSchemaLocation;
+		RETURN TRUE;
+	END;
+
+END MODULE;

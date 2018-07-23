@@ -1,0 +1,2 @@
+curl http://10.58.38.229:9080/app/PE/cet/WS_ValidaFirma/VerificaFirmaXmlPort?wsdl
+http://10.58.38.229:9080/app/PE/cet/WS_FirmadoXml/WS_FirmarXmlPort?wsdl

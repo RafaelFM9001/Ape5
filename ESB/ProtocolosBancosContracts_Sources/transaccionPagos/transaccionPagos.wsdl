@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions targetNamespace="http://impl.webservice.util.web.wstran.ce.siat.sat.gob.mx/" name="transaccionPagos" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://impl.webservice.util.web.wstran.ce.siat.sat.gob.mx/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://impl.webservice.util.web.wstran.ce.siat.sat.gob.mx/" schemaLocation="transaccionPagos_schema1.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="generaTransaccion">
+    <part name="parameters" element="tns:generaTransaccion"/>
+  </message>
+  <message name="generaTransaccionResponse">
+    <part name="parameters" element="tns:generaTransaccionResponse"/>
+  </message>
+  <message name="WsTransException">
+    <part name="fault" element="tns:WsTransException"/>
+  </message>
+  <message name="guardaRespuestaTransaccion">
+    <part name="parameters" element="tns:guardaRespuestaTransaccion"/>
+  </message>
+  <message name="guardaRespuestaTransaccionResponse">
+    <part name="parameters" element="tns:guardaRespuestaTransaccionResponse"/>
+  </message>
+  <message name="consultaRespuestaTransaccion">
+    <part name="parameters" element="tns:consultaRespuestaTransaccion"/>
+  </message>
+  <message name="consultaRespuestaTransaccionResponse">
+    <part name="parameters" element="tns:consultaRespuestaTransaccionResponse"/>
+  </message>
+  <portType name="TransaccionWsPagos">
+    <operation name="generaTransaccion">
+      <input message="tns:generaTransaccion"/>
+      <output message="tns:generaTransaccionResponse"/>
+      <fault message="tns:WsTransException" name="WsTransException"/>
+    </operation>
+    <operation name="guardaRespuestaTransaccion">
+      <input message="tns:guardaRespuestaTransaccion"/>
+      <output message="tns:guardaRespuestaTransaccionResponse"/>
+      <fault message="tns:WsTransException" name="WsTransException"/>
+    </operation>
+    <operation name="consultaRespuestaTransaccion">
+      <input message="tns:consultaRespuestaTransaccion"/>
+      <output message="tns:consultaRespuestaTransaccionResponse"/>
+      <fault message="tns:WsTransException" name="WsTransException"/>
+    </operation>
+  </portType>
+  <binding name="TransaccionWsPagosPortBinding" type="tns:TransaccionWsPagos">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="generaTransaccion">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="WsTransException">
+        <soap:fault name="WsTransException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="guardaRespuestaTransaccion">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="WsTransException">
+        <soap:fault name="WsTransException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="consultaRespuestaTransaccion">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="WsTransException">
+        <soap:fault name="WsTransException" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="transaccionPagos">
+    <port name="TransaccionWsPagosPort" binding="tns:TransaccionWsPagosPortBinding">
+      <soap:address location="http://localhost:7101/TransaccionPagos/TransaccionWsPagosPort"/>
+    </port>
+  </service>
+</definitions>

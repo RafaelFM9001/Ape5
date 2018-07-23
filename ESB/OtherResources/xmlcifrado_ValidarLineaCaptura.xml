@@ -1,0 +1,29 @@
+<validarLineaCaptura>
+	<request>
+		<![CDATA[<xenc:EncryptedData Type="http://www.w3.org/2001/04/xmlenc#Element"
+			xmlns:xenc="http://www.w3.org/2001/04/xmlenc#">
+			<xenc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc" />
+			<ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+				xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+				<xenc:EncryptedKey xmlns:xenc="http://www.w3.org/2001/04/xmlenc#">
+					<xenc:EncryptionMethod
+						Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p" />
+					<ds:KeyInfo xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+						<ds:KeyValue>
+							<ds:RSAKeyValue>
+								<ds:Modulus>z3QNATflwHBglv/aUctVBbDHlkrneLta+trqKfaVO7kqKsPtZJZWeVC32bPybkI3fl5vNnUEdCXmSBKr2ckxdIUUg4e1EFRK7too5lwoXZazo70B1SnpTPacWPeXOi91vYwrhjYQyob/dwQLh1b9t7HS3/475d01443Om92ve8gIBD8nblTWY1qHRvU2HmRRG5Rz1RkLpQY8JlDeNJ1hTFoIi+RdXRwQQh89JhUWOMuzd2HscaWPIJaswyxHKRvf8RRqV4fUB/wmXRaZmF/ORTJCJlHyfCU/MVNNoAV9+cSRqKZO7hOKR/HCWkcFJHQ7ls79SGHPC9zWjnqA/NxVkQ==</ds:Modulus>
+								<ds:Exponent>AQAB</ds:Exponent>
+							</ds:RSAKeyValue>
+						</ds:KeyValue>
+					</ds:KeyInfo>
+					<xenc:CipherData>
+						<xenc:CipherValue>e5O4kZ7bjF0Ln+h6R8OhI62mshiraphrNcF+7NrevlYR4Tsg2KB7Cgqq5JOBWL3/SHr2oZX/22m9S0OtyqPMzUejk9N9SUhuLX2V2KBbcQubLR3y5thF5nPrnF3HXeKiEB5RMCrgE4S7N/WkHnSxyY8oq7yU9nAvpMJhoDvaxlLoXrUaL0zdsnTgrJP133+bK4eBzIOvE+s3Nug2Xpx7CPASSR5+Jv5uuQYrZaOfEaiHxDU5dQNEfVn+JbLG1LxrdP9X0d0g2npb1eB2IRBg9q5pjbpb7HCOAwEwaEg/Bei3QZZHxTj2bZKb044JY8fEOR4stEBRyX/er1k2h6n+eQ==</xenc:CipherValue>
+					</xenc:CipherData>
+				</xenc:EncryptedKey>
+			</ds:KeyInfo>
+			<xenc:CipherData>
+				<xenc:CipherValue>rJ6sToWE5FzfvPml/3jpuW5XA5rjLoJq6j1onLPxeGh5UDoP8sMiOI+ilos8l5MoVOPJr2evFKm4JxnMTjn4gukwcOBiIx+hHvqEUCPg+l2/wE5Y17acToWebEXHgkajE5VT6MIz4ty4U7qAYO3no5eqMett1h1E5+E2rIccgC3P7xxWl0q0p6VSh2pfCVLjy5B0TBj7phW36npFL6HFfEET85+uubDS73WAJ4EkU2ntQ4MV67a8MB5ahEfD140EDo06VQ37M7VIW8YzErctTKwVE4lNti14FdZsnzXBWRxiv8P9QgCs3eE8hFgbzuLYogRfVYpykSXZ0qPtoo4PJ6LUU2lKCW/V0+mFWCAyi4sGWTm63aBHdu5W5yjXbVzy</xenc:CipherValue>
+			</xenc:CipherData>
+		</xenc:EncryptedData>]]>
+	</request>
+</validarLineaCaptura>

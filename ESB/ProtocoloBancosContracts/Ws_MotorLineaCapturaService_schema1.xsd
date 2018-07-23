@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ws.web.mlc.matce.sat.gob.mx/" version="1.0" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:tns="http://ws.web.mlc.matce.sat.gob.mx/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="CeMotorLC" type="tns:ceMotorLineaCaptura"/>
+  <xsd:element name="CeMotorLcEstatus" nillable="true" type="xsd:anyType"/>
+  <xsd:element name="RespuestaCeMotorLC" type="tns:respuestaCeMotorLineaCaptura"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="darEstatusLineaCaptura" type="tns:darEstatusLineaCaptura"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="darEstatusLineaCapturaResponse" type="tns:darEstatusLineaCapturaResponse"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="generarLineaCaptura" type="tns:generarLineaCaptura"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="generarLineaCapturaResponse" type="tns:generarLineaCapturaResponse"/>
+  <xsd:element name="mensaje" type="tns:mensaje"/>
+  <xsd:complexType name="generarLineaCaptura">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="CeMotorLC" type="tns:ceMotorLineaCaptura"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ceMotorLineaCaptura">
+    <xsd:sequence>
+      <xsd:element name="tipoPago" type="xsd:string"/>
+      <xsd:element name="identificador" type="xsd:string"/>
+      <xsd:element name="referencia" type="xsd:string"/>
+      <xsd:element name="vigenciaLineaCaptura" type="xsd:dateTime"/>
+      <xsd:element name="importe" type="xsd:long"/>
+      <xsd:element name="tipoValidacion" type="xsd:int"/>
+      <xsd:element name="rfcSolicitante" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="generarLineaCapturaResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="respuestaCeMotorLc" type="tns:respuestaCeMotorLineaCaptura"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="respuestaCeMotorLineaCaptura">
+    <xsd:sequence>
+      <xsd:element name="tipoPago" type="xsd:int"/>
+      <xsd:element name="identificador" type="xsd:string"/>
+      <xsd:element name="referencia" type="xsd:string"/>
+      <xsd:element name="vigenciaLC" type="xsd:dateTime"/>
+      <xsd:element name="importe" type="xsd:long"/>
+      <xsd:element name="tipoValidacion" type="xsd:int"/>
+      <xsd:element name="digitosGlobales" type="xsd:int"/>
+      <xsd:element name="lc" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="darEstatusLineaCaptura">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="CeMotorLcEstatus" type="tns:ceMotorEstatusLineaCaptura"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ceMotorEstatusLineaCaptura">
+    <xsd:sequence>
+      <xsd:element name="lc" type="xsd:string"/>
+      <xsd:element name="importe" type="xsd:long"/>
+      <xsd:element name="fechaIngreso" type="xsd:dateTime"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="darEstatusLineaCapturaResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="RespuestaCeMotorLcEstatus" type="tns:respuestaCeMotorEstatusLineaCaptura"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="respuestaCeMotorEstatusLineaCaptura">
+    <xsd:sequence>
+      <xsd:element name="lc" type="xsd:string"/>
+      <xsd:element name="importe" type="xsd:long"/>
+      <xsd:element maxOccurs="unbounded" name="mensajes" type="tns:mensaje"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="mensaje">
+    <xsd:sequence>
+      <xsd:element name="clave" type="xsd:string"/>
+      <xsd:element name="descripcion" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

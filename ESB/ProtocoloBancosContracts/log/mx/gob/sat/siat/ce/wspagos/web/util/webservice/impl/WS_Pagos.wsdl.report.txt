@@ -1,0 +1,51 @@
+
+
+Importing file: C:\WS\ProtocoloBancosV2\ProtocolosBancosContracts_Sources\WS_Pagos\WS_Pagos.wsdl
+
+The WSDL import will proceed with bindings WebServicePagosBinding.
+Creating wsdl schema document for file:///C:/WS/ProtocoloBancosV2/ProtocolosBancosContracts_Sources/WS_Pagos/WS_Pagos.wsdl.
+Parsing wsdl binding {http://impl.webservice.util.web.wspagos.ce.siat.sat.gob.mx/}WebServicePagosBinding.
+Parsing wsdl binding input validaLineaCaptura.
+Parsing wsdl binding output validaLineaCaptura.
+Parsing wsdl binding fault WsPagosException.
+Parsing wsdl binding input cobroDocumentoLineaCaptura.
+Parsing wsdl binding output cobroDocumentoLineaCaptura.
+Parsing wsdl binding fault WsPagosException.
+Parsing wsdl binding input bloqueoLineaCaptura.
+Parsing wsdl binding output bloqueoLineaCaptura.
+Parsing wsdl binding fault WsPagosException.
+Parsing wsdl binding input consultaEstatusLineaCaptura.
+Parsing wsdl binding output consultaEstatusLineaCaptura.
+Parsing wsdl binding fault WsPagosException.
+Parsing wsdl binding input actualizaLC.
+Parsing wsdl binding output actualizaLC.
+Parsing wsdl binding fault WsPagosException.
+Parsing wsdl binding input actualizarPedimentos.
+Parsing wsdl binding output actualizarPedimentos.
+Parsing wsdl binding fault WsPagosException.
+Parsing wsdl binding input actualizarPedimentosIfx.
+Parsing wsdl binding output actualizarPedimentosIfx.
+Parsing wsdl binding fault WsPagosException.
+Parsing wsdl binding input consultaLCparaIfx.
+Parsing wsdl binding output consultaLCparaIfx.
+Parsing wsdl binding fault WsPagosException.
+Processing doc style for operation validaLineaCaptura.
+Processing doc style for operation cobroDocumentoLineaCaptura.
+Processing doc style for operation bloqueoLineaCaptura.
+Processing doc style for operation consultaEstatusLineaCaptura.
+Processing doc style for operation actualizaLC.
+Processing doc style for operation actualizarPedimentos.
+Processing doc style for operation actualizarPedimentosIfx.
+Processing doc style for operation consultaLCparaIfx.
+Populating WSDL schema WS_Pagos.xsd.
+Creating file WS_Pagos.xsd in the workspace.
+Creating file /ProtocoloBancosContracts/WS_Pagos_schema1.xsd in the workspace.
+Copying source WSDL WS_Pagos.wsdl to WS_Pagos.wsdl.
+
+Elapsed time processing this message definition file: 1.39 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

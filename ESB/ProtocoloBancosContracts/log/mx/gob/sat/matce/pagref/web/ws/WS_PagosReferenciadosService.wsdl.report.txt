@@ -1,0 +1,25 @@
+
+
+Importing file: C:\WS\ProtocoloBancos\ProtocoloBancosContractsSources\wsdl_IntercambioBancos\WS_PagosReferenciadosService.wsdl
+
+The WSDL import will proceed with bindings Ws_PagosReferenciadosPortBinding.
+Creating wsdl schema document for file:///C:/WS/ProtocoloBancos/ProtocoloBancosContractsSources/wsdl_IntercambioBancos/WS_PagosReferenciadosService.wsdl.
+Parsing wsdl binding {http://ws.web.pagref.matce.sat.gob.mx/}Ws_PagosReferenciadosPortBinding.
+Parsing wsdl binding input validarLineaCaptura.
+Parsing wsdl binding output validarLineaCaptura.
+Parsing wsdl binding input recibirMensajeCobro.
+Parsing wsdl binding output recibirMensajeCobro.
+Processing doc style for operation validarLineaCaptura.
+Processing doc style for operation recibirMensajeCobro.
+Populating WSDL schema WS_PagosReferenciadosService.xsd.
+Creating file WS_PagosReferenciadosService.xsd in the workspace.
+Creating file /ProtocoloBancosCommonContracts/Ws_PagosReferenciadosService_schema1.xsd in the workspace.
+Copying source WSDL WS_PagosReferenciadosService.wsdl to WS_PagosReferenciadosService.wsdl.
+
+Elapsed time processing this message definition file: 0.633 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+
