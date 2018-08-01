@@ -1,4 +1,0 @@
-
-
-Importing file: C:\WS\ProtocoloBancos\ProtocolosBancosContracts_Sources\transaccionPagos\transaccionPagos.wsdl
-
