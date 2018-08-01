@@ -1,0 +1,49 @@
+BROKER SCHEMA mx.gob.sat.matce.protocolobancos.lineacaptura
+PATH mx.gob.sat.matce;
+
+/*
+*
+* Autor: Oscar Daniel Jiménez Gutiérrez - Softtek
+* Fecha de creación: Enero 2018 Version: 1.0
+*/
+
+
+CREATE COMPUTE MODULE LineaCapturaValidar_MapToEncriptacion
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE refEnv REFERENCE TO Environment;
+		DECLARE refIn REFERENCE TO InputRoot;
+		CALL InitializeFlow(refEnv, refIn, 'PB.LINEACAPTURA.VALIDAR.RES');
+		SET Environment.encryptedMessage = InputRoot.XMLNSC.*.request;
+		SET OutputRoot.XMLNSC.ns4:desencriptarXml.xmlEncriptado = InputRoot.XMLNSC.*.request;
+		SET OutputRoot.XMLNSC.[1].DetalleTransaccion = Environment.DetalleTransaccion;		
+		RETURN TRUE;
+	END;
+END MODULE;
+
+CREATE COMPUTE MODULE LineaCapturaConsultar_MapToEncriptacion
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE refEnv REFERENCE TO Environment;
+		DECLARE refIn REFERENCE TO InputRoot;
+		CALL InitializeFlow(refEnv, refIn, 'PB.LINEACAPTURA.CONSULTAR.RES');
+		SET Environment.encryptedMessage = InputRoot.XMLNSC.*.request;
+		SET OutputRoot.XMLNSC.ns4:desencriptarXml.xmlEncriptado = InputRoot.XMLNSC.*.request;
+		SET OutputRoot.XMLNSC.[1].DetalleTransaccion = Environment.DetalleTransaccion;
+		RETURN TRUE;
+	END;
+END MODULE;
+
+
+CREATE COMPUTE MODULE LineaCapturaRegistrarCobro_MapToEncriptacion
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE refEnv REFERENCE TO Environment;
+		DECLARE refIn REFERENCE TO InputRoot;
+		CALL InitializeFlow(refEnv, refIn, 'PB.LINEACAPTURA.COBRAR.RES');
+		SET Environment.encryptedMessage = InputRoot.XMLNSC.*.request;
+		SET OutputRoot.XMLNSC.ns4:desencriptarXml.xmlEncriptado = InputRoot.XMLNSC.*.request;
+		SET OutputRoot.XMLNSC.[1].DetalleTransaccion = Environment.DetalleTransaccion;
+		RETURN TRUE;
+	END;
+END MODULE;

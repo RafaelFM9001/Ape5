@@ -1,0 +1,89 @@
+BROKER SCHEMA mx.gob.sat.matce.protocolobancos.lineacaptura.validar
+
+/*
+*
+* Autor: Oscar Daniel Jiménez Gutiérrez - Softtek
+* Fecha de creación: Enero 2018 Version: 1.0
+*/
+
+
+DECLARE ns NAMESPACE 'http://impl.webservice.util.web.wspagos.ce.siat.sat.gob.mx/';
+DECLARE ns7 NAMESPACE 'http://ws.web.mlc.matce.sat.gob.mx/';
+DECLARE ns4 NAMESPACE 'http://ws.web.firma.matce.sat.gob.mx/';
+DECLARE ns13 NAMESPACE 'http://impl.webservice.util.web.wspagos.ce.siat.sat.gob.mx/';
+DECLARE ns16 NAMESPACE 'http://impl.webservice.util.web.wstran.ce.siat.sat.gob.mx/';
+DECLARE ns2 NAMESPACE 'http://ws.web.firma.matce.sat.gob.mx/';
+
+
+CREATE COMPUTE MODULE MapToValidarFirma
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot.XMLNSC.ns4:validateXmlSign.DetalleTransaccion = Environment.DetalleTransaccion;
+		SET OutputRoot.XMLNSC.ns4:validateXmlSign.(XMLNSC.CDataField)contenidoXml = Environment.MsgDesencriptado.XMLNSC.*:desencriptarXmlResponse.xmlLlano;
+		RETURN TRUE;
+	END;
+END MODULE;
+
+CREATE COMPUTE MODULE MapToValidarLineaCaptura
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot.XMLNSC.ns:validaLineaCaptura.DetalleTransaccion = Environment.DetalleTransaccion;
+		SET OutputRoot.XMLNSC.ns:validaLineaCaptura.validaLinea.cveBanco = Environment.MsgDesencriptado_Parsed.XMLNSC.ValidaLinea.cveBanco;
+		SET OutputRoot.XMLNSC.ns:validaLineaCaptura.validaLinea.lc = Environment.DetalleTransaccion.lc;
+		SET OutputRoot.XMLNSC.ns:validaLineaCaptura.validaLinea.importe = Environment.MsgDesencriptado_Parsed.XMLNSC.ValidaLinea.importe;
+		SET OutputRoot.XMLNSC.ns:validaLineaCaptura.validaLinea.fechaHoraEnvio = Environment.MsgDesencriptado_Parsed.XMLNSC.ValidaLinea.fechaHoraEnvio;
+		RETURN TRUE;
+	END;
+END MODULE;
+
+
+CREATE COMPUTE MODULE RegistrarCobro_MapToValidarLineaCaptura
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot.XMLNSC.ns:validaLineaCaptura.DetalleTransaccion = Environment.DetalleTransaccion;
+		SET OutputRoot.XMLNSC.ns:validaLineaCaptura.DetalleTransaccion.CobroDocumento = Environment.MsgDesencriptado_Parsed.XMLNSC.CobroDocumento;
+		DELETE LASTCHILD OF OutputRoot.XMLNSC.ns:validaLineaCaptura.DetalleTransaccion.CobroDocumento;
+		SET OutputRoot.XMLNSC.ns:validaLineaCaptura.validaLinea.cveBanco = Environment.MsgDesencriptado_Parsed.XMLNSC.CobroDocumento.cveBanco;
+		SET OutputRoot.XMLNSC.ns:validaLineaCaptura.validaLinea.lc = Environment.DetalleTransaccion.lc;
+		SET OutputRoot.XMLNSC.ns:validaLineaCaptura.validaLinea.importe = Environment.MsgDesencriptado_Parsed.XMLNSC.CobroDocumento.importe;
+		SET OutputRoot.XMLNSC.ns:validaLineaCaptura.validaLinea.fechaHoraEnvio = Environment.MsgDesencriptado_Parsed.XMLNSC.CobroDocumento.fechaHoraCobro;
+		RETURN TRUE;
+	END;
+END MODULE;
+
+CREATE COMPUTE MODULE RegistrarCobro_MapToBloquearLineaCaptura
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot.XMLNSC.ns13:bloqueoLineaCaptura.DetalleTransaccion = Environment.DetalleTransaccion;
+		SET OutputRoot.XMLNSC.ns13:bloqueoLineaCaptura.DetalleTransaccion.CobroDocumento = Environment.MsgDesencriptado_Parsed.XMLNSC.CobroDocumento;
+		DELETE LASTCHILD OF OutputRoot.XMLNSC.ns13:bloqueoLineaCaptura.DetalleTransaccion.CobroDocumento;
+		SET OutputRoot.XMLNSC.ns13:bloqueoLineaCaptura.bloqueoLineaCapturaInfo.lc = Environment.DetalleTransaccion.lc;
+		SET OutputRoot.XMLNSC.ns13:bloqueoLineaCaptura.bloqueoLineaCapturaInfo.cveBanco = Environment.MsgDesencriptado_Parsed.XMLNSC.CobroDocumento.cveBanco;
+		SET OutputRoot.XMLNSC.ns13:bloqueoLineaCaptura.bloqueoLineaCapturaInfo.fechaBloqueo = Environment.MsgDesencriptado_Parsed.XMLNSC.CobroDocumento.fechaHoraCobro;
+		SET OutputRoot.XMLNSC.ns13:bloqueoLineaCaptura.bloqueoLineaCapturaInfo.status = '1';
+		RETURN TRUE;
+	END;
+END MODULE;
+
+
+CREATE COMPUTE MODULE MapToConsultarStatusLineaCaptura
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot.XMLNSC.ns13:consultaEstatusLineaCaptura.DetalleTransaccion = Environment.DetalleTransaccion;
+		SET OutputRoot.XMLNSC.ns13:consultaEstatusLineaCaptura.consulta.cveBanco = Environment.MsgDesencriptado_Parsed.XMLNSC.Consulta.cveBanco;
+		SET OutputRoot.XMLNSC.ns13:consultaEstatusLineaCaptura.consulta.lc = Environment.DetalleTransaccion.lc;
+		SET OutputRoot.XMLNSC.ns13:consultaEstatusLineaCaptura.consulta.fechaHoraEnvio = Environment.MsgDesencriptado_Parsed.XMLNSC.Consulta.fechaHoraEnvio;
+		RETURN TRUE;
+	END;
+END MODULE;
+
+
+CREATE COMPUTE MODULE MapToConsultarTransaccionLineaCaptura
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot.XMLNSC.ns16:consultaRespuestaTransaccion.DetalleTransaccion = Environment.DetalleTransaccion;
+		SET OutputRoot.XMLNSC.ns16:consultaRespuestaTransaccion.consultaTransaccion.transaccion = Environment.MsgDesencriptado_Parsed.XMLNSC.consultaTransaccion.transaccion;
+		SET OutputRoot.XMLNSC.ns16:consultaRespuestaTransaccion.consultaTransaccion.cFlujo = Environment.MsgDesencriptado_Parsed.XMLNSC.consultaTransaccion.cFlujo;
+		RETURN TRUE;
+	END;
+END MODULE;

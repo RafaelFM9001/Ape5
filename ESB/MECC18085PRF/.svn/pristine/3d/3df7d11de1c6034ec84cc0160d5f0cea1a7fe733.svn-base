@@ -1,0 +1,53 @@
+BROKER SCHEMA mx.gob.sat.matce.protocolobancos.lineacaptura
+
+/*
+* AggregateRes_AddClientMQMD
+* Propósito: El código de estos módulos se ejecuta al final de los flujos de agregación,
+* su función es dirigir el mensaje de respuesta a la cola de respuesta indicada en la solicitud
+* original para los casos de solicitudes vía MQ, para los casos de WebService no se genera una respuesta
+* debido a que esta debe ser consultada vía el servicio de consultar transacción.
+*
+* Autor: Oscar Daniel Jiménez Gutiérrez - Softtek
+* Fecha de creación: Enero 2018 Version: 1.0
+*/
+
+
+CREATE COMPUTE MODULE LineaCapturaValidar_AggregateRes_AddClientMQMD
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		IF Environment.DetalleTransaccion.MQMD_Main.ReplyToQ = 'PB.LINEACAPTURA.VALIDAR.RES.WS' THEN
+			RETURN FALSE;
+		ELSE
+			SET OutputRoot.MQMD.CorrelId = CAST(Environment.DetalleTransaccion.MQMD_Main.CorrelId AS BLOB);
+			SET OutputRoot.XMLNSC = InputRoot.XMLNSC;
+			SET OutputLocalEnvironment.Destination.MQ.DestinationData.queueName = COALESCE(Environment.DetalleTransaccion.MQMD_Main.ReplyToQ, 'PB.LINEACAPTURA.VALIDAR.ERR');
+			RETURN TRUE;
+		END IF;
+	END;
+END MODULE;
+
+--El siguiente módulo es común para consulta transacción y consulta status LC
+CREATE COMPUTE MODULE LineaCapturaConsultar_AggregateRes_AddClientMQMD
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot.MQMD.CorrelId = CAST(Environment.DetalleTransaccion.MQMD_Main.CorrelId AS BLOB);
+		SET OutputRoot.XMLNSC = InputRoot.XMLNSC;
+		SET OutputLocalEnvironment.Destination.MQ.DestinationData.queueName = COALESCE(Environment.DetalleTransaccion.MQMD_Main.ReplyToQ, 'PB.LINEACAPTURA.CONSULTAR.ERR');
+		RETURN TRUE;
+	END;
+END MODULE;
+
+CREATE COMPUTE MODULE LineaCapturaCobrar_AggregateRes_AddClientMQMD
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		IF Environment.DetalleTransaccion.MQMD_Main.ReplyToQ = 'PB.LINEACAPTURA.REGISTRARCOBRO.RES.WS' THEN
+			RETURN FALSE;
+		ELSE
+			SET OutputRoot.MQMD.CorrelId = CAST(Environment.DetalleTransaccion.MQMD_Main.CorrelId AS BLOB);
+			SET OutputRoot.XMLNSC = InputRoot.XMLNSC;
+			SET OutputLocalEnvironment.Destination.MQ.DestinationData.queueName = COALESCE(Environment.DetalleTransaccion.MQMD_Main.ReplyToQ, 'PB.LINEACAPTURA.COBRAR.ERR');
+			RETURN TRUE;
+		END IF;
+		RETURN FALSE;
+	END;
+END MODULE;

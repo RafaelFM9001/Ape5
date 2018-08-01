@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmAggregateControl.msgnode="ComIbmAggregateControl.msgnode" xmlns:ComIbmAggregateRequest.msgnode="ComIbmAggregateRequest.msgnode" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ComIbmMQOutput.msgnode="ComIbmMQOutput.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:mx_gob_sat_matce_protocolobancos_lineacaptura_Desencriptar.subflow="mx/gob/sat/matce/protocolobancos/lineacaptura/Desencriptar.subflow"
+    xmlns:mx_gob_sat_matce_protocolobancos_lineacaptura_FirmarEncriptarGuardarSalida.subflow="mx/gob/sat/matce/protocolobancos/lineacaptura/FirmarEncriptarGuardarSalida.subflow" xmlns:mx_gob_sat_matce_protocolobancos_lineacaptura_GenerarTransaccion.subflow="mx/gob/sat/matce/protocolobancos/lineacaptura/GenerarTransaccion.subflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="mx/gob/sat/matce/protocolobancos/lineacaptura/validar/LineaCapturaValidar_Orchestration.subflow"
+    nsPrefix="mx_gob_sat_matce_protocolobancos_lineacaptura_validar_LineaCapturaValidar_Orchestration.subflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" useDefaults="true" udpSupport="true">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="LineaCapturaValidar_Orchestration" bundleName="mx/gob/sat/matce/protocolobancos/lineacaptura/validar/LineaCapturaValidar_Orchestration" pluginId="ProtocoloBancosBackEnd"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ProtocoloBancosBackEnd/icons/full/obj16/LineaCapturaValidar_Orchestration.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ProtocoloBancosBackEnd/icons/full/obj30/LineaCapturaValidar_Orchestration.gif"/>
+    <longDescription xmi:type="utility:ConstantString" string="Autor: Oscar Daniel Jiménez Gutiérrez - Softtek&#xD;&#xA;Fecha de creación: Enero 2018"/>
+    <version xmi:type="utility:ConstantString" string="1.0"/>
+    <composition>
+      <nodes xmi:type="eflow:FCMSource" xmi:id="InTerminal.Input" location="20,20">
+        <translation xmi:type="utility:TranslatableString" key="InTerminal.Input" bundleName="mx/gob/sat/matce/protocolobancos/lineacaptura/validar/LineaCapturaValidar_Orchestration" pluginId="ProtocoloBancosBackEnd"/>
+      </nodes>
+      <nodes xmi:type="mx_gob_sat_matce_protocolobancos_lineacaptura_Desencriptar.subflow:FCMComposite_1" xmi:id="FCMComposite_1_1" location="202,21">
+        <translation xmi:type="utility:ConstantString" string="Desencriptar"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="137,87" rotation="TOP_TO_BOTTOM" computeExpression="esql://routine/mx.gob.sat.matce.protocolobancos.lineacaptura#LineaCapturaValidar_Orchestration.Main">
+        <translation xmi:type="utility:ConstantString" string="Orchestration"/>
+      </nodes>
+      <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Error" location="199,310" rotation="TOP_TO_BOTTOM">
+        <translation xmi:type="utility:TranslatableString" key="OutTerminal.Output" bundleName="mx/gob/sat/matce/protocolobancos/lineacaptura/validar/LineaCapturaValidar_Orchestration" pluginId="ProtocoloBancosBackEnd"/>
+      </nodes>
+      <nodes xmi:type="mx_gob_sat_matce_protocolobancos_lineacaptura_FirmarEncriptarGuardarSalida.subflow:FCMComposite_1" xmi:id="FCMComposite_1_4" location="150,222" rotation="TOP_TO_BOTTOM">
+        <translation xmi:type="utility:ConstantString" string="FirmarEncriptarGuardarSalida"/>
+      </nodes>
+      <nodes xmi:type="mx_gob_sat_matce_protocolobancos_lineacaptura_GenerarTransaccion.subflow:FCMComposite_1" xmi:id="FCMComposite_1_5" location="26,141" rotation="TOP_TO_BOTTOM">
+        <translation xmi:type="utility:ConstantString" string="GenerarTransaccion"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="80,20" computeExpression="esql://routine/mx.gob.sat.matce.protocolobancos.lineacaptura#LineaCapturaValidar_MapToEncriptacion.Main" computeMode="all">
+        <translation xmi:type="utility:ConstantString" string="MapToEncriptacion"/>
+      </nodes>
+      <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="133,195" rotation="TOP_TO_BOTTOM">
+        <translation xmi:type="utility:TranslatableString" key="OutTerminal.Error" bundleName="mx/gob/sat/matce/protocolobancos/lineacaptura/validar/LineaCapturaValidar_Orchestration" pluginId="ProtocoloBancosBackEnd"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="454,52" computeExpression="esql://routine/mx.gob.sat.matce.protocolobancos.lineacaptura.validar#MapToValidarFirma.Main">
+        <translation xmi:type="utility:ConstantString" string="MapToValidarFirma"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="816,127" folderName="LineaCapturaValidar">
+        <translation xmi:type="utility:ConstantString" string="LineaCapturaValidar"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="436,122" computeExpression="esql://routine/mx.gob.sat.matce.protocolobancos.lineacaptura.validar#MapToValidarLineaCaptura.Main">
+        <translation xmi:type="utility:ConstantString" string="MapToValidarLineaCaptura"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_11" location="834,57" folderName="FirmaValidar">
+        <translation xmi:type="utility:ConstantString" string="FirmaValidar"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_14" location="626,53" queueName="PB.FIRMA.VALIDAR.REQ" transactionMode="no" newMsgId="true" request="true" replyToQ="PB.LINEACAPTURA.VALIDAR.AGGREGATE">
+        <translation xmi:type="utility:ConstantString" string="PB.FIRMA.VALIDAR.REQ"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_15" location="587,123" queueName="PB.PAGOS.VALIDARLINEACAPTURA.REQ" transactionMode="no" newMsgId="true" request="true" replyToQ="PB.LINEACAPTURA.VALIDAR.AGGREGATE">
+        <translation xmi:type="utility:ConstantString" string="PB.PAGOS.VALIDARLINEACAPTURA.REQ"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateControl.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_16" location="273,126" aggregateName="LineaCapturaValidarAggregate">
+        <translation xmi:type="utility:ConstantString" string="LineaCapturaValidarAggregate"/>
+      </nodes>
+      <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output1" location="283,276" rotation="TOP_TO_BOTTOM">
+        <translation xmi:type="utility:TranslatableString" key="OutTerminal.ErrorEnClaro" bundleName="mx/gob/sat/matce/protocolobancos/lineacaptura/validar/LineaCapturaValidar_Orchestration" pluginId="ProtocoloBancosBackEnd"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_9" targetNode="FCMComposite_1_6" sourceNode="InTerminal.Input" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_10" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_11" sourceNode="FCMComposite_1_14" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_11" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_16" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_15" targetNode="FCMComposite_1_10" sourceNode="FCMComposite_1_16" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_16" targetNode="FCMComposite_1_14" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_17" targetNode="FCMComposite_1_8" sourceNode="FCMComposite_1_15" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_18" targetNode="FCMComposite_1_15" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_19" targetNode="FCMComposite_1_16" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out2" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out4" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="OutTerminal.Error" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="OutTerminal.Output1" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.Output1" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

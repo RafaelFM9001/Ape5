@@ -1,0 +1,46 @@
+BROKER SCHEMA mx.gob.sat.matce.protocolobancos.lineacaptura.validar
+
+/*
+*
+* Autor: Oscar Daniel Jiménez Gutiérrez - Softtek
+* Fecha de creación: Enero 2018 Version: 1.0
+*/
+
+
+CREATE COMPUTE MODULE LineaCapturaValidarMQAggregateRes_Map
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE ref_MsgBloquearLCRes REFERENCE TO Environment.MsgBloquearLCRes;
+		IF EXISTS(ref_MsgBloquearLCRes.XMLNSC.Error[]) THEN
+			SET OutputRoot.XMLNSC = ref_MsgBloquearLCRes.XMLNSC;
+			PROPAGATE TO TERMINAL 'out4';
+			RETURN FALSE;
+		END IF;
+		IF ref_MsgBloquearLCRes.XMLNSC.*:bloqueoLineaCapturaResponse.resultadoBloqueoLinea.statusBloqueo = 'false' THEN
+			THROW USER EXCEPTION MESSAGE(4) VALUES('No fue posible realizar el bloqueo de la línea de captura (false)');
+		END IF;
+		DECLARE ref_MsgValidarLCRes REFERENCE TO Environment.MsgValidarLCRes; 
+		SET OutputRoot.XMLNSC.ValidarLineaCaptura.response.Respuesta = ref_MsgValidarLCRes.resultadoValidaLinea;
+		RETURN TRUE;
+	END;
+END MODULE;
+
+
+CREATE COMPUTE MODULE LineaCapturaRegistrarCobroMQAggregateRes_Map
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE ref_MsgBloquearLCRes REFERENCE TO Environment.MsgBloquearLCRes;
+		IF EXISTS(ref_MsgBloquearLCRes.XMLNSC.Error[]) THEN
+			SET OutputRoot.XMLNSC = ref_MsgBloquearLCRes.XMLNSC;
+			PROPAGATE TO TERMINAL 'out4';
+			RETURN FALSE;
+		END IF;
+		IF ref_MsgBloquearLCRes.XMLNSC.*:bloqueoLineaCapturaResponse.resultadoBloqueoLinea.statusBloqueo = 'false' THEN
+			THROW USER EXCEPTION MESSAGE(5) VALUES('No fue posible realizar el desbloqueo de la línea de captura (false)');
+		END IF;
+		DECLARE ref_MsgRegistrarCobroLCRes REFERENCE TO Environment.MsgRegistrarCobroLCRes;
+		SET OutputRoot.XMLNSC.RegistrarCobroLineaCaptura.response.Respuesta = ref_MsgRegistrarCobroLCRes.XMLNSC.*:cobroDocumentoLineaCapturaResponse.respuesta;--resultadoValidaLinea
+		SET Environment.DetalleTransaccion.respuestaTransaccion = ref_MsgRegistrarCobroLCRes.XMLNSC.*:cobroDocumentoLineaCapturaResponse.respuesta.codigoValidacion;
+		RETURN TRUE;
+	END;
+END MODULE;

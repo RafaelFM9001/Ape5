@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions name="Ws_MotorLineaCapturaService" targetNamespace="http://ws.web.mlc.matce.sat.gob.mx/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ws.web.mlc.matce.sat.gob.mx/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <documentation>
+    <appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="Ws_MotorLineaCapturaPortBinding" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </appinfo>
+  </documentation>
+  <types>
+    <xsd:schema>
+<xsd:import namespace="http://ws.web.mlc.matce.sat.gob.mx/" schemaLocation="Ws_MotorLineaCapturaService_schema1.xsd"/>
+</xsd:schema>
+  </types>
+  <message name="generarLineaCaptura">
+    <part element="tns:generarLineaCaptura" name="parameters"/>
+  </message>
+  <message name="generarLineaCapturaResponse">
+    <part element="tns:generarLineaCapturaResponse" name="parameters"/>
+  </message>
+  <message name="darEstatusLineaCaptura">
+    <part element="tns:darEstatusLineaCaptura" name="parameters"/>
+  </message>
+  <message name="darEstatusLineaCapturaResponse">
+    <part element="tns:darEstatusLineaCapturaResponse" name="parameters"/>
+  </message>
+  <portType name="Ws_CeMotorLc">
+    <operation name="generarLineaCaptura">
+      <input message="tns:generarLineaCaptura"/>
+      <output message="tns:generarLineaCapturaResponse"/>
+    </operation>
+    <operation name="darEstatusLineaCaptura">
+      <input message="tns:darEstatusLineaCaptura"/>
+      <output message="tns:darEstatusLineaCapturaResponse"/>
+    </operation>
+  </portType>
+  <binding name="Ws_MotorLineaCapturaPortBinding" type="tns:Ws_CeMotorLc">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="generarLineaCaptura">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="darEstatusLineaCaptura">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="Ws_MotorLineaCapturaService">
+    <port binding="tns:Ws_MotorLineaCapturaPortBinding" name="Ws_MotorLineaCapturaPort">
+      <soap:address location="http://localhost:7101/AplPagosReferenciados-MotorLineaCapturaWeb-context-root/Ws_CeMotorLcPort"/>
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,65 @@
+BROKER SCHEMA mx.gob.sat.matce.protocolobancos.proxy.mq
+PATH mx.gob.sat.matce;
+
+/*
+*
+* Autor: Oscar Daniel Jiménez Gutiérrez - Softtek
+* Fecha de creación: Enero 2018 Version: 1.0
+*/
+
+
+DECLARE SchemaLocation EXTERNAL CHARACTER '';
+
+CREATE COMPUTE MODULE Encriptacion_GetDetalleTransaccion
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET Environment.XMLValidator.SchemaLocation = SchemaLocation;
+		DECLARE refEnv REFERENCE TO Environment;
+		DECLARE refIn REFERENCE TO InputRoot;		
+		CALL InitializeFlowProxyMQ(refEnv, refIn);
+		
+		SET OutputRoot.XMLNSC = InputRoot.XMLNSC;
+		DELETE FIELD OutputRoot.XMLNSC.[1].DetalleTransaccion;
+		
+		IF InputRoot.MQMD.SourceQueue = 'PB.MENSAJE.ENCRIPTAR.REQ' THEN
+			SET OutputLocalEnvironment.Destination.SOAP.Request.Operation = 'encriptarXml';
+		ELSE
+			SET OutputLocalEnvironment.Destination.SOAP.Request.Operation = 'desencriptarXml';
+		END IF;
+		
+		RETURN TRUE;
+	END;
+END MODULE;
+
+CREATE COMPUTE MODULE Encriptacion_FaultException
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET Environment.actor = 'WL';
+		IF InputLocalEnvironment.Destination.SOAP.Request.Operation = 'encriptarXml' THEN
+			THROW USER EXCEPTION MESSAGE(4) VALUES('Error al encriptar el mensaje (fault)');
+		ELSE
+			THROW USER EXCEPTION MESSAGE(2) VALUES('Error al desencriptar el mensaje (fault)');
+		END IF;
+		RETURN FALSE;
+	END;
+END MODULE;
+
+
+CREATE COMPUTE MODULE Encriptacion_GenerarRespuestaMQ
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET Environment.actor = 'WL';
+		IF InputRoot.XMLNSC.*:desencriptarXmlResponse.xmlLlano = '' THEN
+			IF InputLocalEnvironment.Destination.SOAP.Request.Operation = 'encriptarXml' THEN
+				THROW USER EXCEPTION MESSAGE(3) VALUES('Error al encriptar el mensaje (respuesta vacía)');
+			ELSE
+				THROW USER EXCEPTION MESSAGE(1) VALUES('Error al desencriptar el mensaje (respuesta vacía)');
+			END IF;
+		END IF;
+		SET OutputRoot.MQMD = Environment.MQMD;
+		SET OutputRoot.XMLNSC = InputRoot.XMLNSC;
+		SET OutputRoot.XMLNSC.[1].DetalleTransaccion = Environment.DetalleTransaccion;
+		SET OutputLocalEnvironment.Destination.MQ.DestinationData.queueName = Environment.MQMD.ReplyToQ;
+		RETURN TRUE;
+	END;
+END MODULE;

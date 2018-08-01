@@ -1,0 +1,21 @@
+mx.gob.sat.matce.protocolobancos.lineacaptura.consulta.LineaCapturaConsultarWS#additionalInstances=10
+mx.gob.sat.matce.protocolobancos.lineacaptura.consulta.LineaCapturaConsultarWS#SchemaLocation=file:///C:/shared/XSD/ProtocoloBancos/LineaCaptura/validarLineaCaptura.xsdmx.gob.sat.matce.protocolobancos.lineacaptura.consulta.LineaCapturaConsultarWS#additionalInstances=10
+mx.gob.sat.matce.protocolobancos.lineacaptura.consulta.LineaCapturaConsultarWS#HTTP Input.URLSpecifier=/protocolobancos/lineacaptura/consultar
+mx.gob.sat.matce.protocolobancos.lineacaptura.consulta.LineaCapturaConsultarWS#ConsultarLineaCapturaWSIn.filePath=C:/shared/logs/ProtocoloBancos/LineaCapturaConsultarWS.log
+mx.gob.sat.matce.protocolobancos.lineacaptura.consulta.LineaCapturaConsultarWS#ConsultarLineaCapturaWSOut.filePath=C:/shared/logs/ProtocoloBancos/LineaCapturaConsultarWS.log
+mx.gob.sat.matce.protocolobancos.lineacaptura.consulta.LineaCapturaConsultarWS#Exception.filePath=C:/shared/logs/ProtocoloBancos/LineaCapturaConsultarWSError.log
+
+mx.gob.sat.matce.protocolobancos.lineacaptura.cobro.LineaCapturaRegistrarCobroWS#additionalInstances=10
+mx.gob.sat.matce.protocolobancos.lineacaptura.cobro.LineaCapturaRegistrarCobroWS#SchemaLocation=file:///C:/shared/XSD/ProtocoloBancos/LineaCaptura/registrarCobroLineaCaptura.xsd
+mx.gob.sat.matce.protocolobancos.lineacaptura.cobro.LineaCapturaRegistrarCobroWS#HTTP Input.URLSpecifier=/protocolobancos/lineacaptura/registrarcobro
+mx.gob.sat.matce.protocolobancos.lineacaptura.cobro.LineaCapturaRegistrarCobroWS#ConsultarLineaCapturaWSOut.filePath=C:/shared/logs/ProtocoloBancos/LineaCapturaRegistrarCobroWS.log
+mx.gob.sat.matce.protocolobancos.lineacaptura.cobro.LineaCapturaRegistrarCobroWS#RegistrarCobroLineaCapturaWSIn.filePath=C:/shared/logs/ProtocoloBancos/LineaCapturaRegistrarCobroWS.log
+mx.gob.sat.matce.protocolobancos.lineacaptura.cobro.LineaCapturaRegistrarCobroWS#Exception.filePath=C:/shared/logs/ProtocoloBancos/LineaCapturaRegistrarCobroWSError.log
+
+mx.gob.sat.matce.protocolobancos.lineacaptura.validacion.LineaCapturaValidarWS#additionalInstances=10
+mx.gob.sat.matce.protocolobancos.lineacaptura.validacion.LineaCapturaValidarWS#SchemaLocation=file:///C:/shared/XSD/ProtocoloBancos/LineaCaptura/validarLineaCaptura.xsd
+mx.gob.sat.matce.protocolobancos.lineacaptura.validacion.LineaCapturaValidarWS#HTTP Input.URLSpecifier=/protocolobancos/lineacaptura/validar
+mx.gob.sat.matce.protocolobancos.lineacaptura.validacion.LineaCapturaValidarWS#HTTP Input.timeoutForClient=20
+mx.gob.sat.matce.protocolobancos.lineacaptura.validacion.LineaCapturaValidarWS#ValidarLineaCapturaWSOut.filePath=C:/shared/logs/ProtocoloBancos/LineaCapturaValidarWS.log
+mx.gob.sat.matce.protocolobancos.lineacaptura.validacion.LineaCapturaValidarWS#ValidarLineaCapturaWSIn.filePath=C:/shared/logs/ProtocoloBancos/LineaCapturaValidarWS.log
+mx.gob.sat.matce.protocolobancos.lineacaptura.validacion.LineaCapturaValidarWS#Exception.filePath=C:/shared/logs/ProtocoloBancos/LineaCapturaValidarWSError.log

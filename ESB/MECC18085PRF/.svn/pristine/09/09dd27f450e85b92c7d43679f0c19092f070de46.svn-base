@@ -1,0 +1,135 @@
+BROKER SCHEMA mx.gob.sat.matce.protocolobancos.lineacaptura
+
+/*
+*
+* Autor: Oscar Daniel Jiménez Gutiérrez - Softtek
+* Fecha de creación: Enero 2018 Version: 1.0
+*/
+
+
+DECLARE ns36 NAMESPACE 'http://impl.webservice.util.web.wspagos.ce.siat.sat.gob.mx/';
+DECLARE ns31 NAMESPACE 'http://ws.web.mlc.matce.sat.gob.mx/';
+
+
+CREATE COMPUTE MODULE LineaCapturaValidar_Orchestration
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE ref_MsgDesencriptado REFERENCE TO Environment.MsgDesencriptado;
+		IF EXISTS(ref_MsgDesencriptado.XMLNSC.Error[]) THEN
+			SET OutputRoot.XMLNSC = ref_MsgDesencriptado.XMLNSC;
+			PROPAGATE TO TERMINAL 'out4';
+			RETURN FALSE;
+		END IF;
+	
+		CREATE FIELD Environment.MsgDesencriptado_Parsed;
+		DECLARE ref_MsgDesencriptado_Parsed REFERENCE TO Environment.MsgDesencriptado_Parsed;
+		
+		--Invoca servicio de generación de transaccion
+		DECLARE xmlstr CHARACTER;
+		SET xmlstr = ref_MsgDesencriptado.XMLNSC.*:desencriptarXmlResponse.xmlLlano;
+		DECLARE xmlblob BLOB cast(xmlstr AS BLOB CCSID ref_MsgDesencriptado.Properties.CodedCharSetId);
+		
+		CREATE LASTCHILD OF ref_MsgDesencriptado_Parsed DOMAIN('XMLNSC') 
+		PARSE(xmlblob, ref_MsgDesencriptado.Properties.Encoding, ref_MsgDesencriptado.Properties.CodedCharSetId);
+
+		SET OutputRoot.XMLNSC.ns:generaTransaccion.DetalleTransaccion = Environment.DetalleTransaccion; 		
+		SET OutputRoot.XMLNSC.ns:generaTransaccion.datosTransaccion.lc = Environment.DetalleTransaccion.lc;
+		SET OutputRoot.XMLNSC.ns:generaTransaccion.datosTransaccion.cveFlujo = '1';
+		SET OutputRoot.XMLNSC.ns:generaTransaccion.datosTransaccion.encriptacion = Environment.encryptedMessage;
+		PROPAGATE;
+		
+		--Si la invocación fue a través de WS entonces debe ser generada una primer respuesta indicado la recepción satisfactoria
+		IF Environment.DetalleTransaccion.MQMD_Main.ReplyToQ = 'PB.LINEACAPTURA.VALIDAR.RES.WS'
+			OR Environment.DetalleTransaccion.numTransaccion = '0' THEN
+			SET OutputRoot.XMLNSC.validarLineaCaptura.response.ResultadoValidaLinea = Environment.respuestaTransaccion;
+			PROPAGATE TO TERMINAL 'out1';
+		END IF;
+		
+		--Invoca servicio de generación de validacion de Línea de captura, la respuesta no importa en este instante, ya que se obtiene mediante el flujo de consulta
+		DELETE FIELD Environment.DetalleTransaccion.respuestaTransaccion;
+		IF Environment.DetalleTransaccion.numTransaccion <> '0' THEN
+			PROPAGATE TO TERMINAL 'out2';
+		END IF;
+		
+		RETURN FALSE;
+	END;
+END MODULE;
+
+
+CREATE COMPUTE MODULE LineaCapturaConsultas_Orchestration
+	--Modulo Común para Consulta de Status LC y Consulta Transaccion
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE ref_MsgDesencriptado REFERENCE TO Environment.MsgDesencriptado;
+		IF EXISTS(ref_MsgDesencriptado.XMLNSC.Error[]) THEN
+			SET OutputRoot.XMLNSC = ref_MsgDesencriptado.XMLNSC;
+			PROPAGATE TO TERMINAL 'out4';
+			RETURN FALSE;
+		END IF;
+	
+		CREATE FIELD Environment.MsgDesencriptado_Parsed;
+		DECLARE ref_MsgDesencriptado_Parsed REFERENCE TO Environment.MsgDesencriptado_Parsed;
+		
+		--Invoca servicio de generación de transaccion
+		DECLARE xmlstr CHARACTER;
+		SET xmlstr = ref_MsgDesencriptado.XMLNSC.*:desencriptarXmlResponse.xmlLlano;
+		DECLARE xmlblob BLOB cast(xmlstr AS BLOB CCSID ref_MsgDesencriptado.Properties.CodedCharSetId);
+		
+		CREATE LASTCHILD OF ref_MsgDesencriptado_Parsed DOMAIN('XMLNSC') 
+		PARSE(xmlblob, ref_MsgDesencriptado.Properties.Encoding, ref_MsgDesencriptado.Properties.CodedCharSetId);
+
+		--Invoca servicio de Consulta de transaccion o Consulta Status LC, y Validación de firma
+		DELETE FIELD OutputRoot.Properties;
+		IF EXISTS(ref_MsgDesencriptado_Parsed.XMLNSC.consultaTransaccion.transaccion[]) THEN
+			SET Environment.DetalleTransaccion.numTransaccion = ref_MsgDesencriptado_Parsed.XMLNSC.consultaTransaccion.transaccion;
+		END IF;
+		DELETE FIELD Environment.DetalleTransaccion.respuestaTransaccion;
+		PROPAGATE TO TERMINAL 'out2';
+		RETURN FALSE; --Utilizar RETURN TRUE en lugar de PROPAGATE + RETURN FALSE genera un error en Aggregate Control porque recibe un Mensaje con Properties en NULL
+	END;
+END MODULE;
+
+
+CREATE COMPUTE MODULE LineaCapturaRegistrarCobro_Orchestration
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE ref_MsgDesencriptado REFERENCE TO Environment.MsgDesencriptado;
+		IF EXISTS(ref_MsgDesencriptado.XMLNSC.Error[]) THEN
+			SET OutputRoot.XMLNSC = ref_MsgDesencriptado.XMLNSC;
+			PROPAGATE TO TERMINAL 'out4';
+			RETURN FALSE;
+		END IF;
+	
+		CREATE FIELD Environment.MsgDesencriptado_Parsed;
+		DECLARE ref_MsgDesencriptado_Parsed REFERENCE TO Environment.MsgDesencriptado_Parsed;
+		
+		--Invoca servicio de generación de transaccion
+		DECLARE xmlstr CHARACTER;
+		SET xmlstr = ref_MsgDesencriptado.XMLNSC.*:desencriptarXmlResponse.xmlLlano;
+		DECLARE xmlblob BLOB cast(xmlstr AS BLOB CCSID ref_MsgDesencriptado.Properties.CodedCharSetId);
+		
+		CREATE LASTCHILD OF ref_MsgDesencriptado_Parsed DOMAIN('XMLNSC') 
+		PARSE(xmlblob, ref_MsgDesencriptado.Properties.Encoding, ref_MsgDesencriptado.Properties.CodedCharSetId);
+		
+		SET OutputRoot.XMLNSC.ns:generaTransaccion.DetalleTransaccion = Environment.DetalleTransaccion;
+		SET OutputRoot.XMLNSC.ns:generaTransaccion.datosTransaccion.lc = Environment.DetalleTransaccion.lc;
+		SET OutputRoot.XMLNSC.ns:generaTransaccion.datosTransaccion.cveFlujo = '3';
+		SET OutputRoot.XMLNSC.ns:generaTransaccion.datosTransaccion.encriptacion = Environment.encryptedMessage;
+		PROPAGATE;
+		
+		--Si la invocación fue a través de WS entonces debe ser generada una primer respuesta indicado la recepción satisfactoria
+		IF Environment.DetalleTransaccion.MQMD_Main.ReplyToQ = 'PB.LINEACAPTURA.REGISTRARCOBRO.RES.WS'
+			OR Environment.DetalleTransaccion.numTransaccion = '0' THEN
+			SET OutputRoot.XMLNSC.registrarCobroLineaCaptura.response.Respuesta = Environment.respuestaTransaccion;
+			PROPAGATE TO TERMINAL 'out1';
+		END IF;
+		
+		--Invoca servicio de generación de validacion de Línea de captura, la respuesta no importa en este instante, ya que se obtiene mediante el flujo de consulta
+		DELETE FIELD Environment.DetalleTransaccion.respuestaTransaccion;
+		IF Environment.DetalleTransaccion.numTransaccion <> '0' THEN
+			PROPAGATE TO TERMINAL 'out2';
+		END IF;
+		
+		RETURN FALSE;
+	END;
+END MODULE;

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmDatabase.msgnode="ComIbmDatabase.msgnode" xmlns:ComIbmMQInput.msgnode="ComIbmMQInput.msgnode" xmlns:ComIbmMQOutput.msgnode="ComIbmMQOutput.msgnode" xmlns:ComIbmTrace.msgnode="ComIbmTrace.msgnode" xmlns:ExceptionManagement_HideErrorDetail.subflow="ExceptionManagement_HideErrorDetail.subflow" xmlns:ThrowException_XMLValidation.subflow="ThrowException_XMLValidation.subflow" xmlns:XMLValidator.msgnode="XMLValidator.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:mx_gob_sat_matce_protocolobancos_lineacaptura_consultartransaccion_LineaCapturaConsultarTransaccion_Orchestration.subflow="mx/gob/sat/matce/protocolobancos/lineacaptura/consultartransaccion/LineaCapturaConsultarTransaccion_Orchestration.subflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="mx/gob/sat/matce/protocolobancos/lineacaptura/consultartransaccion/LineaCapturaConsultarTransaccionMQReq.msgflow"
+    nsPrefix="mx_gob_sat_matce_protocolobancos_lineacaptura_consultartransaccion_LineaCapturaConsultarTransaccionMQReq.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.NoNamespaceSchemaLocation" name="NoNamespaceSchemaLocation" defaultValueLiteral="file:///C:/shared/XSD/ProtocoloBancos/LineaCaptura/consultarTransaccionLineaCaptura.xsd">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <translation xmi:type="utility:TranslatableString" key="LineaCapturaConsultarTransaccionMQReq" bundleName="mx/gob/sat/matce/protocolobancos/lineacaptura/consultartransaccion/LineaCapturaConsultarTransaccionMQReq" pluginId="ProtocoloBancosBackEnd"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ProtocoloBancosBackEnd/icons/full/obj16/LineaCapturaConsultarTransaccionMQReq.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ProtocoloBancosBackEnd/icons/full/obj30/LineaCapturaConsultarTransaccionMQReq.gif"/>
+    <longDescription xmi:type="utility:ConstantString" string="Propósito: Recibe las solicitudes de ConsultaTransacción y genera solicitudes para los servicios Proxy:&#xD;&#xA;-ConsultarTransacción&#xD;&#xA;-ValidarFirma&#xD;&#xA;Este flujo sólo responde al cliente en caso de errores, de lo contrario el siguiente flujo (Agregación) es el encargado de devolver una respuesta.&#xD;&#xA;Autor: Oscar Daniel Jiménez Gutiérrez - Softtek&#xD;&#xA;Fecha de creación: Enero 2018"/>
+    <version xmi:type="utility:ConstantString" string="1.0"/>
+    <composition>
+      <nodes xmi:type="ExceptionManagement_HideErrorDetail.subflow:FCMComposite_1" xmi:id="FCMComposite_1_1" location="673,171" exceptionPrefix="97">
+        <translation xmi:type="utility:ConstantString" string="ExceptionManagement_HideErrorDetail"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="285,23" destination="file" filePath="C:/shared/logs/ProtocoloBancos/LineaCapturaConsultarTransaccionMQReq.log" pattern="LineaCapturaConsultarTransaccion Request=========================================================================================&#xD;&#xA;LineaCaptura:${Root.XMLNSC.consultarTransaccionLineaCaptura.lc} LoggingTimeStamp:${CURRENT_TIMESTAMP} &#xD;&#xA;${Body}">
+        <translation xmi:type="utility:ConstantString" string="LineaCapturaConsultarTransaccionMQReq"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="25,23" queueName="PB.LINEACAPTURA.CONSULTARTRANSACCION.REQ" messageDomainProperty="XMLNSC" transactionMode="no">
+        <translation xmi:type="utility:ConstantString" string="PB.LINEACAPTURA.CONSULTARTRANSACCION.REQ"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="377,175" destination="file" filePath="C:/shared/logs/ProtocoloBancos/LineaCapturaConsultarTransaccionMQReqError.log" pattern="LineaCapturaConsultarTransaccionMQReq Error====================================================================================&#xD;&#xA;LineaCaptura:${Environment.DetalleTransaccion.lc} NumTrans:${Environment.DetalleTransaccion.numTransaccion} FechaTrans:${Environment.DetalleTransaccion.timestampTransaction} FechaLog:${CURRENT_TIMESTAMP} &#xD;&#xA;ServicioConsumidor:${Environment.DetalleTransaccion.servicio} RTQ:${Environment.DetalleTransaccion.MQMD_Main.ReplyToQ} RTQM:${Environment.DetalleTransaccion.MQMD_Main.ReplyToQMgr}&#xD;&#xA;MsgFlow:${Environment.DetalleTransaccion.MessageFlowLabel} ExGroup:${Environment.Broker.ExecutionGroupLabel} Brk:${Environment.Broker.BrokerName}&#xD;&#xA;ExceptionList:&#xD;&#xA;${ExceptionList}">
+        <translation xmi:type="utility:ConstantString" string="Exception"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="864,171" destination="file" filePath="C:/shared/logs/ProtocoloBancos/LineaCapturaConsultarTransaccionMQReq.log" pattern="LineaCapturaConsultarTransaccionMQReq Response(WS)=========================================================================================&#xD;&#xA;LineaCaptura:${Environment.DetalleTransaccion.lc} NumTrans:${Environment.DetalleTransaccion.numTransaccion} FechaTrans:${Environment.DetalleTransaccion.timestampTransaction} FechaLog:${CURRENT_TIMESTAMP} &#xD;&#xA;ServicioConsumidor:${Environment.DetalleTransaccion.servicio} OperacionRequerida:${LocalEnvironment.Destination.SOAP.Request.Operation} RTQ:${Environment.DetalleTransaccion.MQMD_Main.ReplyToQ} RTQM:${Environment.DetalleTransaccion.MQMD_Main.ReplyToQMgr}&#xD;&#xA;MsgFlow:${Environment.DetalleTransaccion.MessageFlowLabel} ExGroup:${Environment.Broker.ExecutionGroupLabel} Brk:${Environment.Broker.BrokerName}&#xD;&#xA;${Body}">
+        <translation xmi:type="utility:ConstantString" string="LineaCapturaConsultarTransaccionMQReq_Res"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="1096,171" destinationMode="list" transactionMode="no">
+        <translation xmi:type="utility:ConstantString" string="DYNAMIC"/>
+      </nodes>
+      <nodes xmi:type="mx_gob_sat_matce_protocolobancos_lineacaptura_consultartransaccion_LineaCapturaConsultarTransaccion_Orchestration.subflow:FCMComposite_1" xmi:id="FCMComposite_1_8" location="594,98">
+        <translation xmi:type="utility:ConstantString" string="LineaCapturaConsultarTransaccion_Orchestration"/>
+      </nodes>
+      <nodes xmi:type="ThrowException_XMLValidation.subflow:FCMComposite_1" xmi:id="FCMComposite_1_2" location="715,19">
+        <translation xmi:type="utility:ConstantString" string="ThrowException_XMLValidation"/>
+      </nodes>
+      <nodes xmi:type="XMLValidator.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="631,24">
+        <translation xmi:type="utility:ConstantString" string="XML Validator"/>
+      </nodes>
+      <nodes xmi:type="ComIbmDatabase.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_11" location="414,117" statement="esql://routine/mx.gob.sat.matce.protocolobancos.lineacaptura.validar#Set_NoNamespaceSchemaLocation.Main">
+        <translation xmi:type="utility:ConstantString" string="Set_NoNamespaceSchemaLocation"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.catch" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input1"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_8" sourceNode="FCMComposite_1_9" sourceTerminalName="OutTerminal.Out" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_9" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_9" sourceTerminalName="OutTerminal.Invalid" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_11" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_11" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_11" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.In"/>
+    </composition>
+    <propertyOrganizer>
+      <propertyDescriptor groupName="Group.XMLValidator" configurable="true" userDefined="true" describedAttribute="Property.NoNamespaceSchemaLocation">
+        <propertyName xmi:type="utility:TranslatableString" key="Property.NoNamespaceSchemaLocation" bundleName="mx/gob/sat/matce/protocolobancos/lineacaptura/consultartransaccion/LineaCapturaConsultarTransaccionMQReq" pluginId="ProtocoloBancosBackEnd"/>
+      </propertyDescriptor>
+    </propertyOrganizer>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

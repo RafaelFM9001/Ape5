@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SAT - Noviembre 2017
+Oscar Daniel Jiménez Gutiérrez - Softtek
+-->
+
+<project basedir="." name="ProtocoloBancosFrontEnd" default="Linux">
+	<property file="build.properties" />
+	<property name="applicationName" value="ProtocoloBancosFrontEnd" />
+	
+	<target name="Linux" description="Compilation for Linux Environments">
+		<property name="environment" value="Linux" />
+		<property name="slash" value="/" />
+		<property name="workspace" location="${basedir}${slash}.." />
+		<property name="BARName" value="${applicationName}.bar" />
+		<antcall target="compilation.main" />
+	</target>
+	
+	<target name="compilation.main" description="Compilation tasks orchestration">
+		<echo message="Starting compilation ${applicationName} for ${environment}..." />
+		<antcall target="clean" />
+		<antcall target="mqsicreatebar.create" />
+		<echo message="Compilation ended" />
+	</target>
+
+	<target name="clean" description="Delete current BAR">
+		<echo message="Delete current BAR (${BARName})" />
+		<delete file="${BARName}" />
+	</target>
+
+	<target name="mqsicreatebar.create" description="Create Bar">
+		<echo message="Creating BAR file: ${BARName}" />
+		<echo message="${toolkit.installation}mqsicreatebar" />
+		<echo message="-data ${workspace}" />
+		<echo message="-b ${basedir}${slash}${BARName}" />
+		<echo message="-cleanBuild" />
+		<echo message="-a ${applicationName}"/>
+		<echo message="-deployAsSource"/>
+
+		<exec executable="${toolkit.installation}mqsicreatebar" spawn="false" logerror="false" failonerror="true" vmlauncher="false">
+			<arg value="-data" />
+			<arg value="${workspace}" />
+			<arg value="-b" />
+			<arg value="${basedir}${slash}${BARName}" />
+			<arg value="-cleanBuild" />
+			<arg value="-a" />
+			<arg value="${applicationName}" />
+			<arg value="-deployAsSource" />
+		</exec>
+		<echo message="Broker Archive file creation ended - ${BARName}"/>
+	</target>
+
+</project>

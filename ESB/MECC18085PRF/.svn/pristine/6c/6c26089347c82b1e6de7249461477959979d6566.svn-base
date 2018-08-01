@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://impl.webservice.util.web.wspagos.ce.siat.sat.gob.mx/" version="1.0" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:tns="http://impl.webservice.util.web.wspagos.ce.siat.sat.gob.mx/">
+  <xsd:element ibmSchExtn:docRoot="true" name="WsPagosException" type="tns:WsPagosException"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="actualizaLC" type="tns:actualizaLC"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="actualizaLCResponse" type="tns:actualizaLCResponse"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="actualizarPedimentos" type="tns:actualizarPedimentos"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="actualizarPedimentosIfx" type="tns:actualizarPedimentosIfx"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="actualizarPedimentosIfxResponse" type="tns:actualizarPedimentosIfxResponse"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="actualizarPedimentosResponse" type="tns:actualizarPedimentosResponse"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="bloqueoLineaCaptura" type="tns:bloqueoLineaCaptura"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="bloqueoLineaCapturaResponse" type="tns:bloqueoLineaCapturaResponse"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="cobroDocumentoLineaCaptura" type="tns:cobroDocumentoLineaCaptura"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="cobroDocumentoLineaCapturaResponse" type="tns:cobroDocumentoLineaCapturaResponse"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="consultaEstatusLineaCaptura" type="tns:consultaEstatusLineaCaptura"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="consultaEstatusLineaCapturaResponse" type="tns:consultaEstatusLineaCapturaResponse"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="consultaLCparaIfx" type="tns:consultaLCparaIfx"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="consultaLCparaIfxResponse" type="tns:consultaLCparaIfxResponse"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="validaLineaCaptura" type="tns:validaLineaCaptura"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="validaLineaCapturaResponse" type="tns:validaLineaCapturaResponse"/>
+  <xsd:complexType name="validaLineaCaptura">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="validaLinea" type="tns:validaLinea"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="validaLinea">
+    <xsd:sequence>
+      <xsd:element name="cveBanco">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[0-9]{5}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="lc">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{20}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="importe">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:long">
+				<xsd:totalDigits value="14"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="fechaHoraEnvio">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:dateTime">
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="validaLineaCapturaResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="resultadoValidaLinea" type="tns:resultadoValidaLinea"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="resultadoValidaLinea">
+    <xsd:sequence>
+      <xsd:element name="cveBanco">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[0-9]{5}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="lc">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{20}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="importe">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:long">
+				<xsd:totalDigits value="14"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="codigoValidacion">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-z0-9]{1,2}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="cveBancoLc">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:int">
+				<xsd:totalDigits value="5"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="fechaHoraEnvio">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:dateTime">
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WsPagosException">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="error" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="message" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="texto" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="actualizarPedimentos">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="informacionPedimentos" type="tns:actualizaPedimentosRequest"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="actualizaPedimentosRequest">
+    <xsd:sequence>
+      <xsd:element name="cveAduana">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[0-9]{3}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="patente">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[0-9]{4}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="numDcto">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:int">
+				<xsd:pattern value="[0-9]{7}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="lineaCaptura">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{20}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>	  
+	  <xsd:element name="cvePrevalidador">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{1,6}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="confirmFp">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{1,6}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="bestado">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{1,6}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="actualizarPedimentosResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="actualizaPedimentosResponse" type="tns:actualizaPedimentosRespuesta"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="actualizaPedimentosRespuesta">
+    <xsd:sequence>
+      <xsd:element name="respuesta" type="xsd:boolean"/>
+      <xsd:element name="claveRespuesta" type="xsd:int"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="actualizarPedimentosIfx">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="informacionPedimentosIfx" type="tns:pedimentosIfx"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="pedimentosIfx">
+    <xsd:sequence>
+      <xsd:element name="totalPago">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:int">
+				<xsd:totalDigits value="10"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="lc">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{20}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="cveBanco">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[0-9]{5}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="cveOrigenPag">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[V|P]{1}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="numOpBancaria">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{1,14}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element maxOccurs="unbounded" minOccurs="0" name="listaContrib" nillable="true" type="tns:contribucion"/>	  	  
+	  <xsd:element name="confirmFP">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{1,6}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="bestado">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{1,6}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>	   
+	  <xsd:element name="cveTipoNoPedim">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{1,6}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>	  
+	  <xsd:element name="cvePaisOrigen">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[A-Z]{3}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="contribucion">
+    <xsd:sequence>
+      <xsd:element name="pagoPedimentoLC">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:int">
+				<xsd:totalDigits value="10"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="cveClaseImpNo">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[0-9]{1,6}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="cveFormaPago">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:int">
+				<xsd:totalDigits value="2"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+      <xsd:element minOccurs="0" name="pago" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="actualizarPedimentosIfxResponse">
+    <xsd:sequence>
+      <xsd:element name="estatus" type="xsd:boolean"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="cobroDocumentoLineaCaptura">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="cobroDocumento" type="tns:cobroDocumento"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="cobroDocumento">
+    <xsd:sequence>
+      <xsd:element name="cveBanco">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[0-9]{5}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="lc">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{20}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element minOccurs="0" name="nOperacionBanco">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{10}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element minOccurs="0" name="canalPago">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:int">
+				<xsd:totalDigits value="1"/>
+				<xsd:pattern value="[1|3]"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element minOccurs="0" name="medioCobro">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:int">
+				<xsd:totalDigits value="1"/>
+				<xsd:pattern value="[1-5]"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="fechaHoraEnvio">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:dateTime">
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element minOccurs="0" name="tipoEfectivo">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{10}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="cobroDocumentoLineaCapturaResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="respuesta" type="tns:resultadoCobroDocumento"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="resultadoCobroDocumento">
+    <xsd:sequence>
+      <xsd:element name="cveBanco">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[0-9]{5}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="lc">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{20}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="importe">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:long">
+				<xsd:totalDigits value="14"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="nOperacionBanco">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{10}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="noTransaccion">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[0-9]{20}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element minOccurs="0" name="cvePrevalidador">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{4}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="codigoValidacion">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-z0-9]{4}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="fechaHoraEnvio">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:dateTime">
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="consultaEstatusLineaCaptura">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="consulta" type="tns:consultaLC"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="consultaLC">
+    <xsd:sequence>
+      <xsd:element name="cveBanco">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[0-9]{5}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="lc">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{20}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+      <xsd:element minOccurs="0" name="fechaHoraEnvio" type="xsd:dateTime"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="consultaEstatusLineaCapturaResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="respuestaConsulta" type="tns:respuestaConsulta"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="respuestaConsulta">
+    <xsd:sequence>
+      <xsd:element name="cveBanco">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[0-9]{5}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="lc">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{20}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="importe">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:long">
+				<xsd:totalDigits value="14"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>      
+	  <xsd:element name="nOperacionBanco">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{10}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="nTransaccion">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[0-9]{20}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element minOccurs="0" name="cvePrevalidador">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{4}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+      <xsd:element minOccurs="0" name="estatusLC" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="fechaHoraEnvio" type="xsd:dateTime"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="bloqueoLineaCaptura">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="bloqueoLineaCapturaInfo" type="tns:bloqueoLC"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="bloqueoLC">
+    <xsd:sequence>
+      <xsd:element name="lc">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{20}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="cveBanco">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[0-9]{5}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+      <xsd:element minOccurs="0" name="fechaBloqueo" type="xsd:dateTime"/>
+      <xsd:element name="status" type="xsd:int"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="bloqueoLineaCapturaResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="resultadoBloqueoLinea" type="tns:respuestaBloqueoLC"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="respuestaBloqueoLC">
+    <xsd:sequence>
+      <xsd:element name="statusBloqueo" type="xsd:boolean"/>
+      <xsd:element minOccurs="0" name="estadoDescripcion" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="actualizaLC">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="informacionLC" type="tns:actualizaLCRequest"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="actualizaLCRequest">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="lineasDeCaptura" type="xsd:string"/>
+	  <xsd:element name="servicio">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:int">
+				<xsd:pattern value="[1|2|3]{1}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+	  <xsd:element name="estatusLc">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:int">
+				<xsd:pattern value="[1-7]{1}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>
+      <xsd:element minOccurs="0" name="usuario" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="password" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="actualizaLCResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="actualizaLCResponse" type="tns:actualizaLCRespuesta"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="actualizaLCRespuesta">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="lineasDeCaptura" type="tns:lineaCaptura"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="lineaCaptura">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="lc" type="xsd:string"/>
+      <xsd:element name="respuesta" type="xsd:boolean"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="consultaLCparaIfx">
+    <xsd:sequence>
+	  <xsd:element name="lc">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[a-zA-Z0-9]{20}"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	  </xsd:element>	
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="consultaLCparaIfxResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="consultaInfoIfxResponse" type="tns:pedimentosIfx"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

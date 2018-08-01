@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema version="1.0" targetNamespace="http://ws.web.firma.matce.sat.gob.mx/" xmlns:tns="http://ws.web.firma.matce.sat.gob.mx/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="firmarXml" type="tns:firmarXml"/>
+  <xs:element name="firmarXmlResponse" type="tns:firmarXmlResponse"/>
+  <xs:element name="validateXmlContentSign" type="tns:validateXmlContentSign"/>
+  <xs:element name="validateXmlContentSignResponse" type="tns:validateXmlContentSignResponse"/>
+  <xs:element name="validateXmlSign" type="tns:validateXmlSign"/>
+  <xs:element name="validateXmlSignResponse" type="tns:validateXmlSignResponse"/>
+  <xs:complexType name="validateXmlContentSign">
+    <xs:sequence>
+      <xs:element name="xmlContent" type="xs:base64Binary" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validateXmlContentSignResponse">
+    <xs:sequence>
+      <xs:element name="isValid" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="firmarXml">
+    <xs:sequence>
+      <xs:element name="xmlPlano" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="firmarXmlResponse">
+    <xs:sequence>
+      <xs:element name="xmlFirmado" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validateXmlSign">
+    <xs:sequence>
+      <xs:element name="contenidoXml" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validateXmlSignResponse">
+    <xs:sequence>
+      <xs:element name="isValid" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

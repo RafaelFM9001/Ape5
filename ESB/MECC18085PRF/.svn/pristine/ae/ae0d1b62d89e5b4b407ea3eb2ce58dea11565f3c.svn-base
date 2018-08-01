@@ -1,0 +1,593 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://impl.webservice.util.web.wspagos.ce.siat.sat.gob.mx/" xmlns:tns="http://impl.webservice.util.web.wspagos.ce.siat.sat.gob.mx/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="WsPagosException" type="tns:WsPagosException"/>
+  <xs:element name="actualizaLC" type="tns:actualizaLC"/>
+  <xs:element name="actualizaLCResponse" type="tns:actualizaLCResponse"/>
+  <xs:element name="actualizarPedimentos" type="tns:actualizarPedimentos"/>
+  <xs:element name="actualizarPedimentosIfx" type="tns:actualizarPedimentosIfx"/>
+  <xs:element name="actualizarPedimentosIfxResponse" type="tns:actualizarPedimentosIfxResponse"/>
+  <xs:element name="actualizarPedimentosResponse" type="tns:actualizarPedimentosResponse"/>
+  <xs:element name="bloqueoLineaCaptura" type="tns:bloqueoLineaCaptura"/>
+  <xs:element name="bloqueoLineaCapturaResponse" type="tns:bloqueoLineaCapturaResponse"/>
+  <xs:element name="cobroDocumentoLineaCaptura" type="tns:cobroDocumentoLineaCaptura"/>
+  <xs:element name="cobroDocumentoLineaCapturaResponse" type="tns:cobroDocumentoLineaCapturaResponse"/>
+  <xs:element name="consultaEstatusLineaCaptura" type="tns:consultaEstatusLineaCaptura"/>
+  <xs:element name="consultaEstatusLineaCapturaResponse" type="tns:consultaEstatusLineaCapturaResponse"/>
+  <xs:element name="consultaLCparaIfx" type="tns:consultaLCparaIfx"/>
+  <xs:element name="consultaLCparaIfxResponse" type="tns:consultaLCparaIfxResponse"/>
+  <xs:element name="validaLineaCaptura" type="tns:validaLineaCaptura"/>
+  <xs:element name="validaLineaCapturaResponse" type="tns:validaLineaCapturaResponse"/>
+  <xs:complexType name="validaLineaCaptura">
+    <xs:sequence>
+      <xs:element name="validaLinea" type="tns:validaLinea" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validaLinea">
+    <xs:sequence>
+      <xs:element name="cveBanco">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9]{5}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="lc">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{20}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="importe">
+		<xs:simpleType>
+			<xs:restriction base="xs:long">
+				<xs:totalDigits value="14"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="fechaHoraEnvio">
+		<xs:simpleType>
+			<xs:restriction base="xs:dateTime">
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validaLineaCapturaResponse">
+    <xs:sequence>
+      <xs:element name="resultadoValidaLinea" type="tns:resultadoValidaLinea" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resultadoValidaLinea">
+    <xs:sequence>
+      <xs:element name="cveBanco">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9]{5}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="lc">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{20}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="importe">
+		<xs:simpleType>
+			<xs:restriction base="xs:long">
+				<xs:totalDigits value="14"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="codigoValidacion">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-z0-9]{1,2}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="cveBancoLc">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:totalDigits value="5"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="fechaHoraEnvio">
+		<xs:simpleType>
+			<xs:restriction base="xs:dateTime">
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WsPagosException">
+    <xs:sequence>
+      <xs:element name="error" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="texto" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizarPedimentos">
+    <xs:sequence>
+      <xs:element name="informacionPedimentos" type="tns:actualizaPedimentosRequest" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizaPedimentosRequest">
+    <xs:sequence>
+      <xs:element name="cveAduana">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9]{3}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="patente">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9]{4}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="numDcto">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:pattern value="[0-9]{7}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="lineaCaptura">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{20}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>	  
+	  <xs:element name="cvePrevalidador">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{1,6}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="confirmFp">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{1,6}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="bestado">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{1,6}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizarPedimentosResponse">
+    <xs:sequence>
+      <xs:element name="actualizaPedimentosResponse" type="tns:actualizaPedimentosRespuesta" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizaPedimentosRespuesta">
+    <xs:sequence>
+      <xs:element name="respuesta" type="xs:boolean"/>
+      <xs:element name="claveRespuesta" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizarPedimentosIfx">
+    <xs:sequence>
+      <xs:element name="informacionPedimentosIfx" type="tns:pedimentosIfx" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pedimentosIfx">
+    <xs:sequence>
+      <xs:element name="totalPago">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:totalDigits value="10"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="lc">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{20}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="cveBanco">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9]{5}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="cveOrigenPag">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[V|P]{1}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="numOpBancaria">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{1,14}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="listaContrib" type="tns:contribucion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>	  	  
+	  <xs:element name="confirmFP" minOccurs="0" maxOccurs="1">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{1,6}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="bestado" minOccurs="0" maxOccurs="1">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{1,6}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>	   
+	  <xs:element name="cveTipoNoPedim" minOccurs="0" maxOccurs="1">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{1,6}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>	  
+	  <xs:element name="cvePaisOrigen" minOccurs="0" maxOccurs="1">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[A-Z]{3}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="contribucion">
+    <xs:sequence>
+      <xs:element name="pagoPedimentoLC">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:totalDigits value="10"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="cveClaseImpNo">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9]{1,6}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="cveFormaPago">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:totalDigits value="2"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+      <xs:element name="pago" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizarPedimentosIfxResponse">
+    <xs:sequence>
+      <xs:element name="estatus" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cobroDocumentoLineaCaptura">
+    <xs:sequence>
+      <xs:element name="cobroDocumento" type="tns:cobroDocumento" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cobroDocumento">
+    <xs:sequence>
+      <xs:element name="cveBanco">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9]{5}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="lc">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{20}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="importe">
+		<xs:simpleType>
+			<xs:restriction base="xs:long">
+				<xs:totalDigits value="14"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="nOperacionBanco" minOccurs="0">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{10}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="canalPago" minOccurs="0">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:totalDigits value="1"/>
+				<xs:pattern value="[1|3]"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="medioCobro" minOccurs="0">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[A|T|D|O|E]?"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	    <xs:element name="tipoEfectivo" minOccurs="0">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{10}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	   <xs:element name="codigoValidacion" minOccurs="0">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{4}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="fechaHoraEnvio">
+		<xs:simpleType>
+			<xs:restriction base="xs:dateTime">
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cobroDocumentoLineaCapturaResponse">
+    <xs:sequence>
+      <xs:element name="respuesta" type="tns:resultadoCobroDocumento" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resultadoCobroDocumento">
+    <xs:sequence>
+      <xs:element name="cveBanco">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9]{5}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="lc">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{20}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="importe">
+		<xs:simpleType>
+			<xs:restriction base="xs:long">
+				<xs:totalDigits value="14"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="nOperacionBanco">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{10}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="noTransaccion">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9]{20}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="cvePrevalidador" minOccurs="0">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{4}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="codigoValidacion">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-z0-9]{4}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="fechaHoraEnvio">
+		<xs:simpleType>
+			<xs:restriction base="xs:dateTime">
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="consultaEstatusLineaCaptura">
+    <xs:sequence>
+      <xs:element name="consulta" type="tns:consultaLC" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="consultaLC">
+    <xs:sequence>
+      <xs:element name="cveBanco">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9]{5}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="lc">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{20}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+      <xs:element name="fechaHoraEnvio" type="xs:dateTime" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="consultaEstatusLineaCapturaResponse">
+    <xs:sequence>
+      <xs:element name="respuestaConsulta" type="tns:respuestaConsulta" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="respuestaConsulta">
+    <xs:sequence>
+      <xs:element name="cveBanco">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9]{5}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="lc">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{20}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="importe">
+		<xs:simpleType>
+			<xs:restriction base="xs:long">
+				<xs:totalDigits value="14"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>      
+	  <xs:element name="nOperacionBanco">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{10}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="nTransaccion">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9]{20}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="cvePrevalidador" minOccurs="0">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{4}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+      <xs:element name="estatusLC" type="xs:string" minOccurs="0"/>
+      <xs:element name="fechaHoraEnvio" type="xs:dateTime" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bloqueoLineaCaptura">
+    <xs:sequence>
+      <xs:element name="bloqueoLineaCapturaInfo" type="tns:bloqueoLC" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bloqueoLC">
+    <xs:sequence>
+      <xs:element name="lc">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{20}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="cveBanco">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9]{5}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+      <xs:element name="fechaBloqueo" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="status" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bloqueoLineaCapturaResponse">
+    <xs:sequence>
+      <xs:element name="resultadoBloqueoLinea" type="tns:respuestaBloqueoLC" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="respuestaBloqueoLC">
+    <xs:sequence>
+      <xs:element name="statusBloqueo" type="xs:boolean"/>
+      <xs:element name="estadoDescripcion" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizaLC">
+    <xs:sequence>
+      <xs:element name="informacionLC" type="tns:actualizaLCRequest" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizaLCRequest">
+    <xs:sequence>
+      <xs:element name="lineasDeCaptura" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+	  <xs:element name="servicio">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:pattern value="[1|2|3]{1}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+	  <xs:element name="estatusLc">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:pattern value="[1-7]{1}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>
+      <xs:element name="usuario" type="xs:string" minOccurs="0"/>
+      <xs:element name="password" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizaLCResponse">
+    <xs:sequence>
+      <xs:element name="actualizaLCResponse" type="tns:actualizaLCRespuesta" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizaLCRespuesta">
+    <xs:sequence>
+      <xs:element name="lineasDeCaptura" type="tns:lineaCaptura" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="lineaCaptura">
+    <xs:sequence>
+      <xs:element name="lc" type="xs:string" minOccurs="0"/>
+      <xs:element name="respuesta" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="consultaLCparaIfx">
+    <xs:sequence>
+	  <xs:element name="lc">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[a-zA-Z0-9]{20}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	  </xs:element>	
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="consultaLCparaIfxResponse">
+    <xs:sequence>
+      <xs:element name="consultaInfoIfxResponse" type="tns:pedimentosIfx" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

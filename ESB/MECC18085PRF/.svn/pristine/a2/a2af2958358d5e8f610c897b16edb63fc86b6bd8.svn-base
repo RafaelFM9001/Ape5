@@ -1,0 +1,14 @@
+/*
+*
+* Autor: Oscar Daniel Jiménez Gutiérrez - Softtek
+* Fecha de creación: 17 Enero 2018 Version: 1.0
+*/
+
+
+--Declaración de NameSpaces utilizados en la generación de mensajes SOAP a lo
+--largo del flujo de mensajes principal y los subflujos asociados
+--NameSpace para SOAP 1.1:
+DECLARE soapenv11 NAMESPACE 'http://schemas.xmlsoap.org/soap/envelope/';
+--NameSpaces para SOAP 1.2:
+DECLARE soapenv NAMESPACE 'http://www.w3.org/2003/05/soap-envelope';
+DECLARE xml NAMESPACE 'http://www.w3.org/XML/1998/namespace';

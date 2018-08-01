@@ -1,0 +1,28 @@
+BROKER SCHEMA mx.gob.sat.matce.protocolobancos.lineacaptura
+
+/*
+* AggregateRes_ThrowException
+* Propósito: El código de estos módulos genera excepciones para los casos donde la respuesta de las
+* agregaciones no es la esperada o llega fuera de tiempo.
+*
+* Autor: Oscar Daniel Jiménez Gutiérrez - Softtek
+* Fecha de creación: Enero 2018 Version: 1.0
+*/
+
+
+CREATE COMPUTE MODULE AggregateRes_ThrowException_Unknown
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		THROW USER EXCEPTION MESSAGE(2) VALUES('Un mensaje no esperado fue recibido por la agregación');
+		RETURN FALSE;
+	END;
+END MODULE;
+
+
+CREATE COMPUTE MODULE AggregateRes_ThrowException_Timeout
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		THROW USER EXCEPTION MESSAGE(3) VALUES('Un mensaje fuera de tiempo fue recibido por la agregación');
+		RETURN FALSE;
+	END;
+END MODULE;

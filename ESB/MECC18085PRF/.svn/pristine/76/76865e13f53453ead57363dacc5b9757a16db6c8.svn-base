@@ -1,0 +1,110 @@
+BROKER SCHEMA mx.gob.sat.matce.protocolobancos.lineacaptura.registrarcobro
+
+DECLARE ActualizarLC_U EXTERNAL CHARACTER '';
+DECLARE ActualizarLC_P EXTERNAL CHARACTER '';
+
+/*
+*
+* Autor: Oscar Daniel Jiménez Gutiérrez - Softtek
+* Fecha de creación: Enero 2018 Version: 1.0
+*/
+
+
+DECLARE ns NAMESPACE 'http://impl.webservice.util.web.wspagos.ce.siat.sat.gob.mx/';
+
+
+CREATE COMPUTE MODULE LineaCapturaRegistrarCobroMQAggregateRes_MapToConsultarLCparaIfx
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE ref_MsgRegistrarCobroLCRes REFERENCE TO Environment.MsgRegistrarCobroLCRes;
+		IF EXISTS(ref_MsgRegistrarCobroLCRes.XMLNSC.Error[]) THEN
+			SET OutputRoot.XMLNSC = ref_MsgRegistrarCobroLCRes.XMLNSC;
+			PROPAGATE TO TERMINAL 'out4';
+			RETURN FALSE;
+		END IF;
+		IF ref_MsgRegistrarCobroLCRes.XMLNSC.ns:cobroDocumentoLineaCapturaResponse.respuesta.codigoValidacion = 'AC01' THEN
+			SET OutputRoot.XMLNSC.ns:consultaLCparaIfx.DetalleTransaccion = Environment.DetalleTransaccion;
+			SET OutputRoot.XMLNSC.ns:consultaLCparaIfx.lc = Environment.DetalleTransaccion.lc;
+			RETURN TRUE;
+		ELSE
+			SET OutputRoot.XMLNSC.RegistrarCobroLineaCaptura.Respuesta = ref_MsgRegistrarCobroLCRes.XMLNSC.*:cobroDocumentoLineaCapturaResponse.respuesta;--resultadoValidaLinea
+			SET Environment.DetalleTransaccion.respuestaTransaccion = ref_MsgRegistrarCobroLCRes.XMLNSC.*:cobroDocumentoLineaCapturaResponse.respuesta.codigoValidacion;
+			PROPAGATE TO TERMINAL 'out1';
+		END IF;
+		
+		RETURN FALSE;
+	END;
+END MODULE;
+
+
+CREATE COMPUTE MODULE LineaCapturaRegistrarCobroMQAggregateRes_MapToActualizarPedimentosIfx
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE ref_MsgConsultarLCparaIfxRes REFERENCE TO Environment.MsgConsultarLCparaIfxRes;
+		IF EXISTS(ref_MsgConsultarLCparaIfxRes.XMLNSC.Error[]) THEN
+			SET OutputRoot.XMLNSC = ref_MsgConsultarLCparaIfxRes.XMLNSC;
+			PROPAGATE TO TERMINAL 'out4';
+			RETURN FALSE;
+		END IF;
+		SET OutputRoot.XMLNSC.ns:actualizarPedimentosIfx.DetalleTransaccion = Environment.DetalleTransaccion;
+		--SET OutputRoot.XMLNSC.ns:actualizarPedimentosIfx.informacionPedimentosIfx = ref_MsgConsultarLCparaIfxRes.XMLNSC.ns:consultaLCparaIfxResponse.consultaInfoIfxResponse;
+		--Mapeo campo por campo debido a que la respuesta del servicio de consulta retorna los elementos en desorden
+		SET OutputRoot.XMLNSC.ns:actualizarPedimentosIfx.informacionPedimentosIfx.totalPago = ref_MsgConsultarLCparaIfxRes.XMLNSC.ns:consultaLCparaIfxResponse.consultaInfoIfxResponse.totalPago;
+		SET OutputRoot.XMLNSC.ns:actualizarPedimentosIfx.informacionPedimentosIfx.lc = Environment.DetalleTransaccion.lc;
+		SET OutputRoot.XMLNSC.ns:actualizarPedimentosIfx.informacionPedimentosIfx.cveBanco = ref_MsgConsultarLCparaIfxRes.XMLNSC.ns:consultaLCparaIfxResponse.consultaInfoIfxResponse.cveBanco;
+		SET OutputRoot.XMLNSC.ns:actualizarPedimentosIfx.informacionPedimentosIfx.cveOrigenPag = ref_MsgConsultarLCparaIfxRes.XMLNSC.ns:consultaLCparaIfxResponse.consultaInfoIfxResponse.cveOrigenPag;
+		SET OutputRoot.XMLNSC.ns:actualizarPedimentosIfx.informacionPedimentosIfx.numOpBancaria = ref_MsgConsultarLCparaIfxRes.XMLNSC.ns:consultaLCparaIfxResponse.consultaInfoIfxResponse.numOpBancaria;
+		DECLARE i INTEGER 1;
+		FOR ref_listaContrib AS ref_MsgConsultarLCparaIfxRes.XMLNSC.ns:consultaLCparaIfxResponse.consultaInfoIfxResponse.listaContrib[] DO
+			SET OutputRoot.XMLNSC.ns:actualizarPedimentosIfx.informacionPedimentosIfx.listaContrib[i].pagoPedimentoLC = ref_listaContrib.pagoPedimentoLC;
+			SET OutputRoot.XMLNSC.ns:actualizarPedimentosIfx.informacionPedimentosIfx.listaContrib[i].cveClaseImpNo =   ref_listaContrib.cveClaseImpNo;
+			SET OutputRoot.XMLNSC.ns:actualizarPedimentosIfx.informacionPedimentosIfx.listaContrib[i].cveFormaPago =    ref_listaContrib.cveFormaPago;
+			SET OutputRoot.XMLNSC.ns:actualizarPedimentosIfx.informacionPedimentosIfx.listaContrib[i].pago = ref_listaContrib.pago;
+			SET i = i + 1;		
+		END FOR;
+		SET OutputRoot.XMLNSC.ns:actualizarPedimentosIfx.informacionPedimentosIfx.confirmFP = ref_MsgConsultarLCparaIfxRes.XMLNSC.ns:consultaLCparaIfxResponse.consultaInfoIfxResponse.confirmFP;
+		SET OutputRoot.XMLNSC.ns:actualizarPedimentosIfx.informacionPedimentosIfx.bestado = ref_MsgConsultarLCparaIfxRes.XMLNSC.ns:consultaLCparaIfxResponse.consultaInfoIfxResponse.bestado;
+		SET OutputRoot.XMLNSC.ns:actualizarPedimentosIfx.informacionPedimentosIfx.cveTipoNoPedim = ref_MsgConsultarLCparaIfxRes.XMLNSC.ns:consultaLCparaIfxResponse.consultaInfoIfxResponse.cveTipoNoPedim;
+		SET OutputRoot.XMLNSC.ns:actualizarPedimentosIfx.informacionPedimentosIfx.cvePaisOrigen = ref_MsgConsultarLCparaIfxRes.XMLNSC.ns:consultaLCparaIfxResponse.consultaInfoIfxResponse.cvePaisOrigen;
+		RETURN TRUE;
+	END;
+END MODULE;
+
+CREATE COMPUTE MODULE LineaCapturaRegistrarCobroMQAggregateRes_MapToActualizarLC
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE ref_ActualizarPedimentosIfxRes REFERENCE TO Environment.ActualizarPedimentosIfxRes;
+		IF EXISTS(ref_ActualizarPedimentosIfxRes.XMLNSC.Error[]) THEN
+			--Si hubo error al actualizar la LC en Informix debe ser realizada una actualización de estado de LC a Cancelada
+			SET OutputRoot.XMLNSC.ns:actualizaLC.DetalleTransaccion = Environment.DetalleTransaccion;
+			SET OutputRoot.XMLNSC.ns:actualizaLC.informacionLC.lineasDeCaptura = Environment.DetalleTransaccion.lc;
+			SET OutputRoot.XMLNSC.ns:actualizaLC.informacionLC.servicio = 3;
+			SET OutputRoot.XMLNSC.ns:actualizaLC.informacionLC.estatusLc = 4; --4=Cancelada
+			SET OutputRoot.XMLNSC.ns:actualizaLC.informacionLC.usuario = ActualizarLC_U;
+			SET OutputRoot.XMLNSC.ns:actualizaLC.informacionLC.password = ActualizarLC_P;
+			PROPAGATE TO TERMINAL 'out1';
+			RETURN FALSE;
+		ELSE
+			--la actualización en informix es exitosa se debe desbloquear la LC
+			SET OutputRoot.XMLNSC.ns:bloqueoLineaCaptura.DetalleTransaccion = Environment.DetalleTransaccion;
+			SET OutputRoot.XMLNSC.ns:bloqueoLineaCaptura.bloqueoLineaCapturaInfo.lc = Environment.DetalleTransaccion.lc;
+			SET OutputRoot.XMLNSC.ns:bloqueoLineaCaptura.bloqueoLineaCapturaInfo.cveBanco = Environment.DetalleTransaccion.CobroDocumento.cveBanco;
+			SET OutputRoot.XMLNSC.ns:bloqueoLineaCaptura.bloqueoLineaCapturaInfo.fechaBloqueo = Environment.DetalleTransaccion.CobroDocumento.fechaHoraCobro;
+			SET OutputRoot.XMLNSC.ns:bloqueoLineaCaptura.bloqueoLineaCapturaInfo.status = 0; --1 bloqueado 0 desbloqueado
+		END IF;
+		RETURN TRUE;
+	END;
+END MODULE;
+
+
+CREATE COMPUTE MODULE LineaCapturaRegistrarCobroMQAggregateRes_ActualizarLCResponse
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		IF EXISTS(InputRoot.XMLNSC.ns:actualizaLCResponse.Error[]) THEN
+			SET OutputRoot.XMLNSC = InputRoot.XMLNSC;
+		ELSE
+			THROW USER EXCEPTION MESSAGE(6) VALUES('La línea de captura ha sido cancelada');
+		END IF;
+		RETURN TRUE;
+	END;
+END MODULE;

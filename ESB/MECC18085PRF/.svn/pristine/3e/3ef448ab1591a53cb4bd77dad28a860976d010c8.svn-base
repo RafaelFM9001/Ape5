@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://ws.web.firma.matce.sat.gob.mx/" version="1.0" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:tns="http://ws.web.firma.matce.sat.gob.mx/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element ibmSchExtn:docRoot="true" name="firmarXml" type="tns:firmarXml"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="firmarXmlResponse" type="tns:firmarXmlResponse"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="validateXmlContentSign" type="tns:validateXmlContentSign"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="validateXmlContentSignResponse" type="tns:validateXmlContentSignResponse"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="validateXmlSign" type="tns:validateXmlSign"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="validateXmlSignResponse" type="tns:validateXmlSignResponse"/>
+  <xsd:complexType name="validateXmlContentSign">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="xmlContent" type="xsd:base64Binary"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="validateXmlContentSignResponse">
+    <xsd:sequence>
+      <xsd:element name="isValid" type="xsd:boolean"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="firmarXml">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="xmlPlano" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="firmarXmlResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="xmlFirmado" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="validateXmlSign">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="contenidoXml" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="validateXmlSignResponse">
+    <xsd:sequence>
+      <xsd:element name="isValid" type="xsd:boolean"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

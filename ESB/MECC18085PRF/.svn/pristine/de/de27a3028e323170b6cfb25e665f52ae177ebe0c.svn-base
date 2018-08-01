@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions name="Ws_FirmaXmlService" targetNamespace="http://ws.web.firma.matce.sat.gob.mx/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ws.web.firma.matce.sat.gob.mx/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <documentation>
+    <appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="Ws_FirmaXmlPortBinding" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </appinfo>
+  </documentation>
+  <types>
+    <xsd:schema>
+<xsd:import namespace="http://ws.web.firma.matce.sat.gob.mx/" schemaLocation="Ws_FirmaXmlService_schema1.xsd"/>
+</xsd:schema>
+  </types>
+  <message name="firmarXml">
+    <part element="tns:firmarXml" name="parameters"/>
+  </message>
+  <message name="firmarXmlResponse">
+    <part element="tns:firmarXmlResponse" name="parameters"/>
+  </message>
+  <message name="validateXmlSign">
+    <part element="tns:validateXmlSign" name="parameters"/>
+  </message>
+  <message name="validateXmlSignResponse">
+    <part element="tns:validateXmlSignResponse" name="parameters"/>
+  </message>
+  <message name="validateXmlContentSign">
+    <part element="tns:validateXmlContentSign" name="parameters"/>
+  </message>
+  <message name="validateXmlContentSignResponse">
+    <part element="tns:validateXmlContentSignResponse" name="parameters"/>
+  </message>
+  <portType name="WS_FirmarXml">
+    <operation name="firmarXml">
+      <input message="tns:firmarXml"/>
+      <output message="tns:firmarXmlResponse"/>
+    </operation>
+    <operation name="validateXmlSign">
+      <input message="tns:validateXmlSign"/>
+      <output message="tns:validateXmlSignResponse"/>
+    </operation>
+    <operation name="validateXmlContentSign">
+      <input message="tns:validateXmlContentSign"/>
+      <output message="tns:validateXmlContentSignResponse"/>
+    </operation>
+  </portType>
+  <binding name="Ws_FirmaXmlPortBinding" type="tns:WS_FirmarXml">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="firmarXml">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="validateXmlSign">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="validateXmlContentSign">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="Ws_FirmaXmlService">
+    <port binding="tns:Ws_FirmaXmlPortBinding" name="Ws_FirmaXmlPort">
+      <soap:address location="http://localhost:7101/AplPagosReferenciados-WS_FirmaXml-context-root/WS_FirmarXmlPort"/>
+    </port>
+  </service>
+</definitions>
